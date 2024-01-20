@@ -28,6 +28,8 @@ android {
         testApplicationId "com.example.road.to.effective.snapshot.testing"
         minSdk 23
         targetSdk 34
+        versionCode 1
+        versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         testInstrumentationRunnerArguments = [
@@ -93,6 +95,7 @@ dependencies {
     androidTestImplementation 'com.github.sergio-sastre.AndroidUiTestingUtils:android-testify:2.1.0'
 
     androidTestImplementation 'com.google.testparameterinjector:test-parameter-injector:1.8'
+   // androidTestImplementation project(':app')
 
     androidTestUtil 'androidx.test:orchestrator:1.4.2'
     // for Gradle Managed Devices

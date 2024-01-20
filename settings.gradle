@@ -25,3 +25,12 @@ include ':dialogs:shot+roborazzi'
 include ':lazycolumnscreen:dropshots+paparazzi'
 include ':recyclerviewscreen:dropshots+roborazzi'
 include ':testannotations'
+
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        maven { url "https://jitpack.io" }
+    }
+}
