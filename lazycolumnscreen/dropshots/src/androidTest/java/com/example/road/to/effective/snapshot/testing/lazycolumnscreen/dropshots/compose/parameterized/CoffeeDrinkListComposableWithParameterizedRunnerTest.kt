@@ -3,7 +3,6 @@ package com.example.road.to.effective.snapshot.testing.lazycolumnscreen.dropshot
 import com.dropbox.dropshots.Dropshots
 import com.dropbox.dropshots.ThresholdValidator
 import com.example.road.to.effective.snapshot.testing.lazycolumnscreen.AppTheme
-import com.example.road.to.effective.snapshot.testing.lazycolumnscreen.CoffeeDrinkList
 import com.example.road.to.effective.snapshot.testing.lazycolumnscreen.CoffeeDrinksScreenPreview
 import com.example.road.to.effective.snapshot.testing.lazycolumnscreen.dropshots.utils.setContent
 import com.example.road.to.effective.snapshot.testing.testannotations.ComposableTest

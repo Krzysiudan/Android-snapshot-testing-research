@@ -1,7 +1,6 @@
 package com.example.road.to.effective.snapshot.testing.lazycolumnscreen.roborazzi.compose.parameterized
 
 import com.example.road.to.effective.snapshot.testing.lazycolumnscreen.AppTheme
-import com.example.road.to.effective.snapshot.testing.lazycolumnscreen.CoffeeDrinkList
 import com.example.road.to.effective.snapshot.testing.lazycolumnscreen.CoffeeDrinksScreenPreview
 import com.example.road.to.effective.snapshot.testing.lazycolumnscreen.roborazzi.utils.filePath
 import org.junit.Rule
@@ -56,7 +55,7 @@ class CoffeeDrinkListComposableParameterizedHappyPathTest(
 
     @get:Rule
     val activityScenarioForComposableRule = RobolectricActivityScenarioForComposableRule(
-        config = testItem.configItem,
+        config = testItem.item,
         deviceScreen = PIXEL_4A,
     )
 

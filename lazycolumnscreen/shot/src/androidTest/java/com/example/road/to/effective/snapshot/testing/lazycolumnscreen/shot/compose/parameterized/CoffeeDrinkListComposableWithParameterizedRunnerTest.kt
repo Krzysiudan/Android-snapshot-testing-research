@@ -2,7 +2,6 @@ package com.example.road.to.effective.snapshot.testing.lazycolumnscreen.shot.com
 
 import androidx.test.filters.SdkSuppress
 import com.example.road.to.effective.snapshot.testing.lazycolumnscreen.AppTheme
-import com.example.road.to.effective.snapshot.testing.lazycolumnscreen.CoffeeDrinkList
 import com.example.road.to.effective.snapshot.testing.lazycolumnscreen.CoffeeDrinksScreenPreview
 import com.example.road.to.effective.snapshot.testing.lazycolumnscreen.shot.setContent
 import com.example.road.to.effective.snapshot.testing.testannotations.ComposableTest
