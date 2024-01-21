@@ -23,6 +23,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
@@ -127,4 +128,16 @@ fun ActionNotSupportedSnackbar(
             SnackbarResult.ActionPerformed -> {}
         }
     }
+}
+
+@Preview
+@Composable
+fun CoffeeDrinksScreenPreview() {
+    val coffeeDrinks = DummyCoffeeDrinksDataSource().getCoffeeDrinks().map { coffeeDrink ->
+        CoffeeDrinkItemMapper().map(coffeeDrink)
+    }
+    CoffeeDrinksScreenUI(
+        coffeeDrinksState = CoffeeDrinksState(coffeeDrinks),
+        coffeeShopName = "Coffee Drinks Shop"
+    ) {}
 }

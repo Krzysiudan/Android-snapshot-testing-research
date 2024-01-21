@@ -17,6 +17,15 @@ enum class HappyPathTestItem(val item: ComposableConfigItem) {
             fontSize = FontSize.NORMAL,
             displaySize = DisplaySize.NORMAL,
         ),
+    ),
+    PORTRAIT_NIGHT(
+        ComposableConfigItem(
+            locale = "en",
+            orientation = Orientation.PORTRAIT,
+            uiMode = UiMode.NIGHT,
+            fontSize = FontSize.NORMAL,
+            displaySize = DisplaySize.NORMAL,
+        ),
     )
 }
 

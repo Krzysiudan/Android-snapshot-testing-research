@@ -2,6 +2,7 @@ package com.example.road.to.effective.snapshot.testing.lazycolumnscreen.android_
 
 import com.example.road.to.effective.snapshot.testing.lazycolumnscreen.AppTheme
 import com.example.road.to.effective.snapshot.testing.lazycolumnscreen.CoffeeDrinkList
+import com.example.road.to.effective.snapshot.testing.lazycolumnscreen.CoffeeDrinksScreenPreview
 import com.example.road.to.effective.snapshot.testing.testannotations.ComposableTest
 import com.example.road.to.effective.snapshot.testing.testannotations.HappyPath
 import com.example.road.to.effective.snapshot.testing.testannotations.UnhappyPath
@@ -64,6 +65,7 @@ class CoffeeDrinkListComposableParameterizedHappyPathTest(
         config = testItem.item
     )
 
+
     @ScreenshotInstrumentation
     @HappyPath
     @ComposableTest
@@ -72,7 +74,7 @@ class CoffeeDrinkListComposableParameterizedHappyPathTest(
         rule
             .setCompose {
                 AppTheme {
-                    CoffeeDrinkList(coffeeDrink = coffeeDrink)
+                    CoffeeDrinksScreenPreview()
                 }
             }
             .withExperimentalFeatureEnabled(GenerateDiffs)
@@ -110,7 +112,7 @@ class CoffeeDrinkListComposableParameterizedUnhappyPathTest(
         rule
             .setCompose {
                 AppTheme {
-                    CoffeeDrinkList(coffeeDrink = coffeeDrink)
+                    CoffeeDrinksScreenPreview()
                 }
             }
             .withExperimentalFeatureEnabled(GenerateDiffs)

@@ -2,6 +2,7 @@ package com.example.road.to.effective.snapshot.testing.lazycolumnscreen.roborazz
 
 import com.example.road.to.effective.snapshot.testing.lazycolumnscreen.AppTheme
 import com.example.road.to.effective.snapshot.testing.lazycolumnscreen.CoffeeDrinkList
+import com.example.road.to.effective.snapshot.testing.lazycolumnscreen.CoffeeDrinksScreenPreview
 import com.example.road.to.effective.snapshot.testing.lazycolumnscreen.roborazzi.utils.filePath
 import org.junit.Rule
 import org.junit.Test
@@ -67,7 +68,7 @@ class CoffeeDrinkListComposableParameterizedHappyPathTest(
             filePath("CoffeeDrinkListComposable_${testItem.name}")
         ) {
             AppTheme {
-                CoffeeDrinkList(coffeeDrink = coffeeDrink)
+                CoffeeDrinksScreenPreview()
             }
         }
     }
@@ -99,7 +100,7 @@ class CoffeeDrinkListComposableParameterizedUnhappyPathTest(
             filePath("CoffeeDrinkListComposable_${testItem.name}")
         ) {
             AppTheme {
-                CoffeeDrinkList(coffeeDrink = coffeeDrink)
+                CoffeeDrinksScreenPreview()
             }
         }
     }
