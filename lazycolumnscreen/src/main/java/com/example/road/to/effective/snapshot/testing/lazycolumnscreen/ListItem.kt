@@ -46,7 +46,7 @@ fun PreviewListItem() {
 }
 
 @Composable
-fun CoffeeDrinkList(
+fun CoffeeDrinkListItemWithDivider(
     modifier: Modifier = Modifier,
     coffeeDrink: CoffeeDrinkItem
 ) {

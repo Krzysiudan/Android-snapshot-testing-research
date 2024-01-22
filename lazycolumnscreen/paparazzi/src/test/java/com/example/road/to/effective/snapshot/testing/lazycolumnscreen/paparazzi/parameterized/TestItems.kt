@@ -93,7 +93,7 @@ enum class UnhappyPathTestItem(val item: DeviceConfig) {
     ),
     AR_XB_SMALL_FONT(
         DeviceConfig(
-            locale = "ar_XB",
+            locale = "ar",
             phoneOrientation = PhoneOrientation.PORTRAIT,
             nightMode = NightMode.NOTNIGHT,
             fontScale = 0.85f,
@@ -102,7 +102,7 @@ enum class UnhappyPathTestItem(val item: DeviceConfig) {
     ),
     AR_XB_HUGE_FONT_SMALL_SCREEN(
         DeviceConfig(
-            locale = "ar_XB",
+            locale = "ar",
             phoneOrientation = PhoneOrientation.PORTRAIT,
             nightMode = NightMode.NOTNIGHT,
             fontScale = 1.3f,
