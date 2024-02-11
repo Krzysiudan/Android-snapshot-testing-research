@@ -30,7 +30,10 @@ import sergio.sastre.uitesting.utils.utils.waitForMeasuredDialog
  * With Gradle Managed Devices (API 27+)
  * 1. Record (saved under this module's build/outputs/managed_device_android_test_additional_output/...):
  *    ./gradlew :dialogs:android-testify:pixel3api30DebugAndroidTest -PuseTestStorage -PrecordModeGmd
- * 2. Verify (move recorded screenshot files first -> https://ndtp.github.io/android-testify/docs/recipes/gmd):
+ * 2. Verify (copy recorded screenshots + assert):
+ *  - Copy recorded screenshots in androidTest/assets -> https://ndtp.github.io/android-testify/docs/recipes/gmd
+ *    ./gradlew :dialogs:android-testify:copyScreenshots -Pdevices=pixel3api30
+ *  - Assert
  *    ./gradlew :dialogs:android-testify:pixel3api30DebugAndroidTest -PuseTestStorage
  *
  * To run them using Android Orchestrator, add the following at the end of the command:
@@ -71,12 +74,9 @@ class DeleteDialogParameterizedHappyPathTest(
     )
 
     @ScreenshotInstrumentation
-    @Test
-    // You can also filter tests by custom annotation (not working with Gradle Managed Devices though)
-    // For that, pass the annotation to the command. For instance, for DialogTest:
-    // -PscreenshotAnnotation=com.example.road.to.effective.snapshot.testing.testannotations.HappyPath
     @HappyPath
     @DialogTest
+    @Test
     fun snapDialog() {
         screenshotRule
             .setScreenshotViewProvider {
@@ -124,12 +124,9 @@ class DeleteDialogParameterizedUnhappyPathTest(
     )
 
     @ScreenshotInstrumentation
-    @Test
-    // You can also filter tests by custom annotation (not working with Gradle Managed Devices though)
-    // For that, pass the annotation to the command. For instance, for DialogTest:
-    // -PscreenshotAnnotation=com.example.road.to.effective.snapshot.testing.testannotations.UnhappyPath
     @UnhappyPath
     @DialogTest
+    @Test
     fun snapDialog() {
         screenshotRule
             .setScreenshotViewProvider {

@@ -3,8 +3,6 @@ package com.example.road.to.effective.snapshot.testing.recyclerviewscreen.androi
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.junit.runners.Parameterized
-import org.junit.runners.Parameterized.Parameters
 import com.example.road.to.effective.snapshot.testing.recyclerviewscreen.R
 import com.example.road.to.effective.snapshot.testing.recyclerviewscreen.ui.rows.training.TrainingViewHolder
 import com.example.road.to.effective.snapshot.testing.testannotations.HappyPath
@@ -12,7 +10,6 @@ import com.example.road.to.effective.snapshot.testing.testannotations.UnhappyPat
 import com.example.road.to.effective.snapshot.testing.testannotations.ViewHolderTest
 import com.google.testing.junit.testparameterinjector.TestParameter
 import com.google.testing.junit.testparameterinjector.TestParameterInjector
-import dev.testify.TestifyFeatures
 import dev.testify.TestifyFeatures.GenerateDiffs
 import dev.testify.annotation.ScreenshotInstrumentation
 import sergio.sastre.uitesting.android_testify.ScreenshotRuleWithConfigurationForView
@@ -29,11 +26,12 @@ import sergio.sastre.uitesting.utils.testrules.animations.DisableAnimationsRule
  *
  * With Gradle Managed Devices (API 27+)
  * 1. Record (saved under this module's build/outputs/managed_device_android_test_additional_output/...):
- *    ./gradlew :recyclerviewscreen:android-testify:pixel3api30DebugAndroidTest -PuseTestStorage -PrecordModeGmd
- * 2. Verify (move recorded screenshot files first -> https://ndtp.github.io/android-testify/docs/recipes/gmd):
- *    ./gradlew :recyclerviewscreen:android-testify:pixel3api30DebugAndroidTest -PuseTestStorage
- *
- * WARNING: filtering tests by custom annotation not working with Gradle Managed Devices)
+ *    ./gradlew :recyclerviewscreen:android-testify:pixel3api30DebugAndroidTest -PuseTestStorage -PrecordModeGmd -Pandroid.testInstrumentationRunnerArguments.annotation=com.example.road.to.effective.snapshot.testing.testannotations.ViewHolderTest
+ * 2. Verify (copy recorded screenshots + assert):
+ *  - Copy recorded screenshots in androidTest/assets -> https://ndtp.github.io/android-testify/docs/recipes/gmd
+ *    ./gradlew :recyclerviewscreen:android-testify:copyScreenshots -Pdevices=pixel3api30
+ *  - Assert
+ *    ./gradlew :recyclerviewscreen:android-testify:pixel3api30DebugAndroidTest -PuseTestStorage -Pandroid.testInstrumentationRunnerArguments.annotation=com.example.road.to.effective.snapshot.testing.testannotations.ViewHolderTest
  *
  * To run them using Android Orchestrator, add the following at the end of the command:
  * -PuseOrchestrator

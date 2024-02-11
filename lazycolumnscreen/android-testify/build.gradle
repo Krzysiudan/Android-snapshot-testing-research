@@ -80,7 +80,7 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion '1.4.7'
+        kotlinCompilerExtensionVersion '1.5.0'
     }
 }
 
@@ -95,23 +95,32 @@ testify {
     useTestStorage = project.hasProperty(USE_TEST_STORAGE)
 }
 
+// Create task to move screenshots generated via Gradle Managed Devices to the right location
+// before verifying them
+def devices = project.hasProperty("devices") ? project.devices : "pixel3api30"
+
+tasks.register('copyScreenshots', Copy) {
+    from "build/outputs/managed_device_android_test_additional_output/debug/${devices}/images"
+    into "src/androidTest/assets"
+}
+
 dependencies {
     implementation project(':lazycolumnscreen')
     implementation project(':testannotations')
 
     implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation "androidx.navigation:navigation-compose:2.7.5"
+    implementation "androidx.navigation:navigation-compose:2.7.6"
 
     // Jetpack Compose
-    androidTestImplementation platform('androidx.compose:compose-bom:2023.03.00')
+    androidTestImplementation platform('androidx.compose:compose-bom:2023.08.00')
     androidTestImplementation "androidx.compose.material:material"
 
     androidTestImplementation 'androidx.test:rules:1.5.0'
     androidTestImplementation "dev.testify:testify-compose:2.0.0-rc03"
     androidTestImplementation 'com.google.testparameterinjector:test-parameter-injector:1.8'
 
-    androidTestImplementation 'com.github.sergio-sastre.AndroidUiTestingUtils:utils:2.1.0'
-    androidTestImplementation 'com.github.sergio-sastre.AndroidUiTestingUtils:android-testify:2.1.0'
+    androidTestImplementation 'com.github.sergio-sastre.AndroidUiTestingUtils:utils:2.2.0'
+    androidTestImplementation 'com.github.sergio-sastre.AndroidUiTestingUtils:android-testify:2.2.0'
 
     androidTestUtil 'androidx.test:orchestrator:1.4.2'
     // for Gradle Managed Devices

@@ -21,7 +21,7 @@ import sergio.sastre.uitesting.utils.crosslibrary.runners.ParameterizedCrossLibr
  *  4. Dropshots: ./gradlew :dialogs:crosslibrary:connectedAndroidTest -Pdropshots.record -PscreenshotLibrary=dropshots
  *  5. Testify:   ./gradlew :dialogs:crosslibrary:screenshotRecord -PscreenshotLibrary=android-testify
  *     Testify via gradle manages devices (saved under this module's build/outputs/managed_device_android_test_additional_output/...):
- *                ./gradlew :dialogs:crosslibrary:pixel3api30DebugAndroidTest -PscreenshotLibrary=android-testify -PrecordModeGmd
+ *                ./gradlew :dialogs:crosslibrary:pixel3api30DebugAndroidTest -PscreenshotLibrary=android-testify -PuseTestStorage -PrecordModeGmd
  *
  * 2. Verify task:
  *  1. Paparazzi: ./gradlew :dialogs:crosslibrary:verifyPaparazziDebug -PscreenshotLibrary=paparazzi
@@ -29,8 +29,11 @@ import sergio.sastre.uitesting.utils.crosslibrary.runners.ParameterizedCrossLibr
  *  3. Shot:      ./gradlew :dialogs:crosslibrary:executeScreenshotTest -PscreenshotLibrary=shot
  *  4. Dropshots: ./gradlew :dialogs:crosslibrary:connectedAndroidTest -PscreenshotLibrary=dropshots
  *  5. Testify:   ./gradlew :dialogs:crosslibrary:screenshotTest -PscreenshotLibrary=android-testify
- *     Testify via gradle manages devices (move screenshot files first -> https://ndtp.github.io/android-testify/docs/recipes/gmd)
- *                ./gradlew :dialogs:crosslibrary:pixel3api30DebugAndroidTest -PscreenshotLibrary=android-testify
+ *     Testify via gradle manages devices (copy recorded screenshots + assert):
+ *          - Copy recorded screenshots in androidTest/assets -> https://ndtp.github.io/android-testify/docs/recipes/gmd
+ *               ./gradlew :dialogs:crosslibrary:copyScreenshots -Pdevices=pixel3api30
+ *          - Assert
+ *               ./gradlew :dialogs:crosslibrary:pixel3api30DebugAndroidTest -PscreenshotLibrary=android-testify -PuseTestStorage
  *
  *  NOTE: These tests run on different api levels when executed with Roborazzi.
  *  Those api levels are defined in the robolectric.properties file under

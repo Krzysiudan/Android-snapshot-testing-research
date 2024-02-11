@@ -83,14 +83,23 @@ testify {
     useTestStorage = project.hasProperty(USE_TEST_STORAGE)
 }
 
+// Create task to move screenshots generated via Gradle Managed Devices to the right location
+// before verifying them
+def devices = project.hasProperty("devices") ? project.devices : "pixel3api30"
+
+tasks.register('copyScreenshots', Copy) {
+    from "build/outputs/managed_device_android_test_additional_output/debug/${devices}/images"
+    into "src/androidTest/assets"
+}
+
 dependencies {
     implementation project(':dialogs')
     implementation project(':testannotations')
 
     androidTestImplementation 'androidx.test:rules:1.5.0'
 
-    androidTestImplementation 'com.github.sergio-sastre.AndroidUiTestingUtils:utils:2.1.0'
-    androidTestImplementation 'com.github.sergio-sastre.AndroidUiTestingUtils:android-testify:2.1.0'
+    androidTestImplementation 'com.github.sergio-sastre.AndroidUiTestingUtils:utils:2.2.0'
+    androidTestImplementation 'com.github.sergio-sastre.AndroidUiTestingUtils:android-testify:2.2.0'
 
     androidTestImplementation 'com.google.testparameterinjector:test-parameter-injector:1.8'
 

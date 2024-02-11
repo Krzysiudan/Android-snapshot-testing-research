@@ -73,6 +73,15 @@ enum class UnhappyPathTestItem(val item: DeviceConfig) {
             displaySize = DisplaySize.NORMAL,
         ),
     ),
+    AR_XB_SMALL(
+        DeviceConfig(
+            locale = "ar-rXB",
+            phoneOrientation = PhoneOrientation.PORTRAIT,
+            nightMode = NightMode.NOTNIGHT,
+            fontScale = 1.3f,
+            displaySize = DisplaySize.LARGEST,
+        ),
+    ),
     HUGE_FONT_SMALL_SCREEN(
         DeviceConfig(
             locale = "en",
@@ -80,15 +89,6 @@ enum class UnhappyPathTestItem(val item: DeviceConfig) {
             nightMode = NightMode.NOTNIGHT,
             fontScale = 1.3f,
             displaySize = DisplaySize.SMALL,
-        ),
-    ),
-    HUGE_FONT_LARGEST_SCREEN(
-        DeviceConfig(
-            locale = "en",
-            phoneOrientation = PhoneOrientation.PORTRAIT,
-            nightMode = NightMode.NOTNIGHT,
-            fontScale = 1.3f,
-            displaySize = DisplaySize.LARGEST,
         ),
     ),
     AR_XB_SMALL_FONT(

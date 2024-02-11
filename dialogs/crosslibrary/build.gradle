@@ -111,6 +111,16 @@ switch (screenshotLibraryName()) {
         break
 }
 
+// Android-Testify:
+// Create task to move screenshots generated via Gradle Managed Devices to the right location
+// before verifying them
+def devices = project.hasProperty("devices") ? project.devices : "pixel3api30"
+
+tasks.register('copyScreenshots', Copy) {
+    from "build/outputs/managed_device_android_test_additional_output/debug/${devices}/images"
+    into "src/androidTest/assets"
+}
+
 dependencies {
     debugImplementation project(path: ':dialogs')
     implementation project(':testannotations')
@@ -118,20 +128,20 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.10.0'
 
-    debugImplementation('com.github.sergio-sastre.AndroidUiTestingUtils:utils:2.1.0')
+    debugImplementation('com.github.sergio-sastre.AndroidUiTestingUtils:utils:2.2.0')
 
-    debugImplementation('com.github.sergio-sastre.AndroidUiTestingUtils:shot:2.1.0')
+    debugImplementation('com.github.sergio-sastre.AndroidUiTestingUtils:shot:2.2.0')
 
-    debugImplementation('com.github.sergio-sastre.AndroidUiTestingUtils:android-testify:2.1.0')
+    debugImplementation('com.github.sergio-sastre.AndroidUiTestingUtils:android-testify:2.2.0')
 
-    debugImplementation('com.github.sergio-sastre.AndroidUiTestingUtils:dropshots:2.1.0')
+    debugImplementation('com.github.sergio-sastre.AndroidUiTestingUtils:dropshots:2.2.0')
 
-    testImplementation('com.github.sergio-sastre.AndroidUiTestingUtils:robolectric:2.1.0')
-    testImplementation('com.github.sergio-sastre.AndroidUiTestingUtils:roborazzi:2.1.0')
-    debugImplementation('com.github.sergio-sastre.AndroidUiTestingUtils:mapper-roborazzi:2.1.0')
+    testImplementation('com.github.sergio-sastre.AndroidUiTestingUtils:robolectric:2.2.0')
+    testImplementation('com.github.sergio-sastre.AndroidUiTestingUtils:roborazzi:2.2.0')
+    debugImplementation('com.github.sergio-sastre.AndroidUiTestingUtils:mapper-roborazzi:2.2.0')
 
-    testImplementation('com.github.sergio-sastre.AndroidUiTestingUtils:paparazzi:2.1.0')
-    debugImplementation('com.github.sergio-sastre.AndroidUiTestingUtils:mapper-paparazzi:2.1.0')
+    testImplementation('com.github.sergio-sastre.AndroidUiTestingUtils:paparazzi:2.2.0')
+    debugImplementation('com.github.sergio-sastre.AndroidUiTestingUtils:mapper-paparazzi:2.2.0')
 
     // for Gradle Managed Devices
     androidTestUtil('androidx.test.services:test-services:1.4.2')

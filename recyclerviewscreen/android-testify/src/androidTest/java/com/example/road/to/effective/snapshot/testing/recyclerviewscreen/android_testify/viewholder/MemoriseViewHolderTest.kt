@@ -6,6 +6,7 @@ import com.example.road.to.effective.snapshot.testing.recyclerviewscreen.ui.rows
 import com.example.road.to.effective.snapshot.testing.testannotations.HappyPath
 import com.example.road.to.effective.snapshot.testing.testannotations.UnhappyPath
 import com.example.road.to.effective.snapshot.testing.testannotations.ViewHolderTest
+import dev.testify.TestifyFeatures.GenerateDiffs
 import dev.testify.annotation.ScreenshotInstrumentation
 import org.junit.Rule
 import org.junit.Test
@@ -28,11 +29,12 @@ import sergio.sastre.uitesting.utils.testrules.animations.DisableAnimationsRule
  *
  * With Gradle Managed Devices (API 27+)
  * 1. Record (saved under this module's build/outputs/managed_device_android_test_additional_output/...):
- *    ./gradlew :recyclerviewscreen:android-testify:pixel3api30DebugAndroidTest -PuseTestStorage -PrecordModeGmd
- * 2. Verify (move recorded screenshot files first -> https://ndtp.github.io/android-testify/docs/recipes/gmd):
- *    ./gradlew :recyclerviewscreen:android-testify:pixel3api30DebugAndroidTest -PuseTestStorage
- *
- * WARNING: filtering tests by custom annotation not working with Gradle Managed Devices)
+ *    ./gradlew :recyclerviewscreen:android-testify:pixel3api30DebugAndroidTest -PuseTestStorage -PrecordModeGmd -Pandroid.testInstrumentationRunnerArguments.annotation=com.example.road.to.effective.snapshot.testing.testannotations.ViewHolderTest
+ * 2. Verify (copy recorded screenshots + assert):
+ *  - Copy recorded screenshots in androidTest/assets -> https://ndtp.github.io/android-testify/docs/recipes/gmd
+ *    ./gradlew :recyclerviewscreen:android-testify:copyScreenshots -Pdevices=pixel3api30
+ *  - Assert
+ *    ./gradlew :recyclerviewscreen:android-testify:pixel3api30DebugAndroidTest -PuseTestStorage -Pandroid.testInstrumentationRunnerArguments.annotation=com.example.road.to.effective.snapshot.testing.testannotations.ViewHolderTest
  *
  * To run them using Android Orchestrator, add the following at the end of the command:
  * -PuseOrchestrator
@@ -78,6 +80,7 @@ class MemoriseViewHolderHappyPathTest {
                 }
             }
             .setScreenshotFirstView()
+            .withExperimentalFeatureEnabled(GenerateDiffs)
             .assertSame(name = "MemoriseViewHolderHappy")
     }
 }
@@ -121,6 +124,7 @@ class MemoriseViewHolderUnhappyPathTest {
                 }
             }
             .setScreenshotFirstView()
+            .withExperimentalFeatureEnabled(GenerateDiffs)
             .assertSame(name = "MemoriseViewHolderUnhappy")
     }
 }
