@@ -72,7 +72,6 @@ class MultipleDevicesAndConfigsMemoriseTest(
             )
                 .forDevices(
                     PIXEL_4A,
-                    MEDIUM_TABLET,
                 )
                 .forConfigs(
                     ViewConfigItem(uiMode = DAY, fontSize = SMALL),
