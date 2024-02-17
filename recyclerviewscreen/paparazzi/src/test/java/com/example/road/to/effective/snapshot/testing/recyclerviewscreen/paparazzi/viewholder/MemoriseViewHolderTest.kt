@@ -12,8 +12,12 @@ import com.example.road.to.effective.snapshot.testing.recyclerviewscreen.paparaz
 import com.example.road.to.effective.snapshot.testing.recyclerviewscreen.paparazzi.utils.PhoneOrientation
 import com.example.road.to.effective.snapshot.testing.recyclerviewscreen.paparazzi.utils.setDisplaySize
 import com.example.road.to.effective.snapshot.testing.recyclerviewscreen.paparazzi.utils.setPhoneOrientation
+import com.example.road.to.effective.snapshot.testing.recyclerviewscreen.paparazzi.viewholder.parameterized.HappyPathTestItem
+import com.example.road.to.effective.snapshot.testing.recyclerviewscreen.paparazzi.viewholder.parameterized.UnhappyPathTestItem
 import org.junit.Rule
 import org.junit.Test
+import org.junit.runner.RunWith
+import org.junit.runners.Parameterized
 
 /**
  * Execute the command below to run only ViewHolderTests
@@ -26,14 +30,31 @@ import org.junit.Test
 /**
  * Example with ActivityScenarioForViewRule of AndroidUiTestingUtils
  */
-class MemoriseViewHolderHappyPathTest {
+@RunWith(Parameterized::class)
+class MemoriseViewHolderHappyPathTest(
+    private val testItem: HappyPathTestItem
+) {
+
+    private val deviceConfig
+        get() = testItem.item.deviceConfig
+    companion object {
+        @JvmStatic
+        @Parameterized.Parameters
+        fun testItemProvider(): Array<HappyPathTestItem> = HappyPathTestItem.values()
+    }
+
     @get:Rule
-    val paparazzi =
-        Paparazzi(
-            deviceConfig = DeviceConfig.PIXEL_5.setPhoneOrientation(PhoneOrientation.LANDSCAPE),
-            theme = "Theme.RoadToEffectiveSnapshotTesting",
-            renderingMode = SessionParams.RenderingMode.V_SCROLL,
-        )
+    val paparazzi = Paparazzi(
+        deviceConfig =
+        DeviceConfig.PIXEL_5.copy(
+            nightMode = deviceConfig.nightMode,
+            locale = deviceConfig.locale,
+            fontScale = deviceConfig.fontScale,
+        ).setPhoneOrientation(deviceConfig.orientation),
+        theme = deviceConfig.theme,
+        supportsRtl = true, // needed for "ar" locale
+        renderingMode = SessionParams.RenderingMode.V_SCROLL,
+    )
 
     @Test
     fun snapViewHolder() {
@@ -51,7 +72,7 @@ class MemoriseViewHolderHappyPathTest {
 
         paparazzi.snapshot(
             view = view.itemView,
-            name = "MemoriseView_Happy"
+            name = "${testItem.name}_MemoriseView_Happy_Parametrized"
         )
     }
 }
@@ -61,17 +82,32 @@ class MemoriseViewHolderHappyPathTest {
  *
  * This is an alternative if we cannot use ActivityScenarioForViewRule()
  */
-class MemoriseViewHolderUnhappyPathTest {
+@RunWith(Parameterized::class)
+class MemoriseViewHolderUnhappyPathTest(
+    private val testItem: UnhappyPathTestItem
+) {
+
+    private val deviceConfig
+        get() = testItem.item.deviceConfig
+
+    companion object {
+        @JvmStatic
+        @Parameterized.Parameters
+        fun testItemProvider(): Array<UnhappyPathTestItem> = UnhappyPathTestItem.values()
+    }
+
     @get:Rule
-    val paparazzi =
-        Paparazzi(
-            deviceConfig =
-            DeviceConfig.PIXEL_5.copy(
-                nightMode = NightMode.NIGHT,
-            ).setPhoneOrientation(PhoneOrientation.LANDSCAPE),
-            theme = "Theme.RoadToEffectiveSnapshotTesting",
-            renderingMode = SessionParams.RenderingMode.V_SCROLL,
-        )
+    val paparazzi = Paparazzi(
+        deviceConfig =
+        DeviceConfig.PIXEL_5.copy(
+            nightMode = deviceConfig.nightMode,
+            locale = deviceConfig.locale,
+            fontScale = deviceConfig.fontScale,
+        ).setPhoneOrientation(deviceConfig.orientation),
+        supportsRtl = true, // needed for "ar" locale
+        theme = deviceConfig.theme,
+        renderingMode = SessionParams.RenderingMode.V_SCROLL,
+    )
 
     @Test
     fun snapViewHolder() {
@@ -91,7 +127,7 @@ class MemoriseViewHolderUnhappyPathTest {
 
         paparazzi.snapshot(
             view = viewHolder.itemView,
-            name = "MemoriseView_Unhappy"
+            name = "${testItem.name}_MemoriseView_Unhappy_Parametrized"
         )
     }
 }
