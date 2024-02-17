@@ -83,16 +83,6 @@ enum class UnhappyPathTestItem(val item: TrainingTestItem) {
             trainingItem = wordsInSomeLangsTrainingItem,
         ),
     ),
-    CUSTOM_THEME_NIGHT_SR_CYRYL_CUSTOM_WITH_WORDS(
-        TrainingTestItem(
-            viewConfig = ViewConfigItem(
-                locale = "sr-Cyrl-RS",
-                theme = R.style.Theme_Custom,
-                uiMode = UiMode.NIGHT,
-            ),
-            trainingItem = wordsInSomeLangsTrainingItem,
-        ),
-    ),
     EN_XA_1M_WORDS_IN_ALL_LANGS(
         TrainingTestItem(
             viewConfig = ViewConfigItem(

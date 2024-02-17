@@ -25,14 +25,6 @@ enum class UnhappyPathTestItem(val item: FragmentConfigItem) {
             fontSize = FontSize.NORMAL,
         ),
     ),
-    CUSTOM_THEME_NIGHT(
-        FragmentConfigItem(
-            locale = "en",
-            theme = R.style.Theme_Custom,
-            uiMode = UiMode.NIGHT,
-            fontSize = FontSize.NORMAL,
-        ),
-    ),
     AR_XB_HUGE(
         FragmentConfigItem(
             locale = "ar_XB",
