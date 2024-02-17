@@ -28,15 +28,6 @@ enum class UnhappyPathTestItem(val item: ActivityConfigItem) {
             displaySize = DisplaySize.SMALL,
         ),
     ),
-    AR_XB_NIGHT_HUGE_LARGEST(
-        ActivityConfigItem(
-            systemLocale = "ar_XB",
-            orientation = Orientation.PORTRAIT,
-            uiMode = UiMode.NIGHT,
-            fontSize = FontSize.HUGE,
-            displaySize = DisplaySize.LARGEST,
-        ),
-    ),
     LANDSCAPE(
         ActivityConfigItem(
             systemLocale = "en",

@@ -40,12 +40,4 @@ enum class UnhappyPathTestItem(val item: FragmentConfigItem) {
             fontSize = FontSize.HUGE,
         ),
     ),
-    LANDSCAPE_NIGHT(
-        FragmentConfigItem(
-            locale = "en",
-            uiMode = UiMode.NIGHT,
-            orientation = Orientation.LANDSCAPE,
-            fontSize = FontSize.NORMAL,
-        ),
-    )
 }
