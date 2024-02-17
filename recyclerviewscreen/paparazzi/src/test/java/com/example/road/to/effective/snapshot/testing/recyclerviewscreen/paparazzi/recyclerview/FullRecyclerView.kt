@@ -2,6 +2,7 @@ package com.example.road.to.effective.snapshot.testing.recyclerviewscreen.papara
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
+import app.cash.paparazzi.DeviceConfig.Companion.PIXEL_5
 import app.cash.paparazzi.DeviceConfig.Companion.PIXEL_XL
 import app.cash.paparazzi.Paparazzi
 import com.android.ide.common.rendering.api.SessionParams
@@ -127,11 +128,13 @@ private fun List<Memorise>.toMemoriseItems(): List<MemoriseItem> =
         )
     }
 
-enum class FullRecyclerViewTestItem(val config: DeviceConfig){
+enum class FullRecyclerViewTestItem(val config: DeviceConfig, val device: app.cash.paparazzi.DeviceConfig = PIXEL_XL){
     NORMAL(DeviceConfig()),
     NORMAL_NIGHT(DeviceConfig(nightMode = NightMode.NIGHT)),
     HUGE_FONT(DeviceConfig(fontScale = 1.5f)),
     SMALL_FONT(DeviceConfig(fontScale = 0.7f)),
     LANDSCAPE(DeviceConfig(orientation = PhoneOrientation.LANDSCAPE)),
     ARABIC(DeviceConfig(locale = "ar")),
+    NORMAL_NEXUS_4(DeviceConfig()),
+    NORMAL_NIGHT_NEXUS_4(DeviceConfig(nightMode = NightMode.NIGHT)),
 }
