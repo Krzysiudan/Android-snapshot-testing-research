@@ -64,6 +64,23 @@ enum class HappyPathTestItem(val item: TrainingTestItem) {
             trainingItem = wordsInSomeLangsTrainingItem,
         ),
     ),
+    WITHOUT_WORDS_NIGHT(
+        TrainingTestItem(
+            viewConfig = ViewConfigItem(
+                locale = "en",
+                uiMode = UiMode.NIGHT,
+            ),
+        )
+    ),
+    WITH_WORDS_NIGHT(
+        TrainingTestItem(
+            viewConfig = ViewConfigItem(
+                locale = "en",
+                uiMode = UiMode.NIGHT,
+            ),
+            trainingItem = wordsInSomeLangsTrainingItem,
+        ),
+    ),
 }
 
 enum class UnhappyPathTestItem(val item: TrainingTestItem) {
