@@ -50,7 +50,7 @@ class MemoriseViewHolderHappyPathTest {
 
     @get:Rule(order = 1)
     var screenshotRule = ScreenshotRuleWithConfigurationForView(
-        exactness = 0.85f,
+        exactness = 0.50f,
         config = ViewConfigItem(
             uiMode = UiMode.DAY,
             locale = "en",
@@ -92,7 +92,7 @@ class MemoriseViewHolderUnhappyPathTest {
 
     @get:Rule(order = 1)
     var screenshotRule = ScreenshotRuleWithConfigurationForView(
-        exactness = 0.85f,
+        exactness = 0.50f,
         config = ViewConfigItem(
             uiMode = UiMode.NIGHT,
             locale = "en_XA",

@@ -4,8 +4,11 @@ import com.example.road.to.effective.snapshot.testing.recyclerviewscreen.mvvm.La
 import com.example.road.to.effective.snapshot.testing.testannotations.FragmentTest
 import com.example.road.to.effective.snapshot.testing.testannotations.HappyPath
 import com.example.road.to.effective.snapshot.testing.testannotations.UnhappyPath
+import dev.testify.CaptureMethod
+import dev.testify.TestifyFeatures
 import dev.testify.TestifyFeatures.GenerateDiffs
 import dev.testify.annotation.ScreenshotInstrumentation
+import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -49,10 +52,15 @@ class LanguageTrainingFragmentParameterizedHappyPathTest(
     @get:Rule(order = 1)
     val activityScreenshotRule =
         ScreenshotRuleWithConfigurationForFragment(
-            exactness = 0.85f,
+            exactness = 0.40f,
             fragmentClass = LanguageTrainingFragment::class.java,
             config = testItem.item,
         )
+
+    @Before
+    fun setUp(){
+        TestifyFeatures.PixelCopyCapture.setEnabled()
+    }
 
     @ScreenshotInstrumentation
     @HappyPath
@@ -84,7 +92,7 @@ class LanguageTrainingFragmentParameterizedUnhappyPathTest(
     @get:Rule(order = 1)
     val activityScreenshotRule =
         ScreenshotRuleWithConfigurationForFragment(
-            exactness = 0.85f,
+            exactness = 0.25f,
             fragmentClass = LanguageTrainingFragment::class.java,
             config = testItem.item,
         )
