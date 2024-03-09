@@ -58,7 +58,7 @@ enum class UnhappyPathTestItem(val item: FragmentConfigItem) {
     LANDSCAPE_DAY(
         FragmentConfigItem(
             locale = "en",
-            uiMode = UiMode.DAY,
+            uiMode = UiMode.NIGHT,
             orientation = Orientation.LANDSCAPE,
             fontSize = FontSize.NORMAL,
         ),
