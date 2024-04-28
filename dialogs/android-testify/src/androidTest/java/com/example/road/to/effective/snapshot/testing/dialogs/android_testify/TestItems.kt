@@ -28,10 +28,19 @@ fun itemArray(context: Context, @StringRes resources: List<Int>): Array<String> 
     resources.map { context.getString(it) }.toTypedArray()
 
 enum class HappyPathTestItem(val deleteItem: DeleteDialogTestItem) {
-    NORMAL(
+    NORMAL_DAY(
         DeleteDialogTestItem(
             bulletTexts = listOf(R.string.largest, R.string.middle, R.string.shortest),
             dialogWidth = DialogWidth.NORMAL,
+        )
+    ),
+    NORMAL_NIGHT(
+        DeleteDialogTestItem(
+            bulletTexts = listOf(R.string.largest, R.string.middle, R.string.shortest),
+            dialogWidth = DialogWidth.NORMAL,
+            viewConfig = ViewConfigItem(
+                uiMode = UiMode.NIGHT,
+            ),
         )
     ),
 }
@@ -47,11 +56,31 @@ enum class UnhappyPathTestItem(val deleteItem: DeleteDialogTestItem) {
             dialogWidth = DialogWidth.WIDE,
         ),
     ),
+    SPACIOUS_DAY(
+        DeleteDialogTestItem(
+            viewConfig = ViewConfigItem(
+                fontSize = FontSize.SMALL,
+                uiMode = UiMode.DAY,
+            ),
+            bulletTexts = listOf(R.string.shortest),
+            dialogWidth = DialogWidth.WIDE,
+        ),
+    ),
     SUFFOCATED_NIGHT(
         DeleteDialogTestItem(
             viewConfig = ViewConfigItem(
                 fontSize = FontSize.HUGE,
                 uiMode = UiMode.NIGHT,
+            ),
+            bulletTexts = repeatedItem(7, R.string.largest),
+            dialogWidth = DialogWidth.NARROW,
+        ),
+    ),
+    SUFFOCATED_DAY(
+        DeleteDialogTestItem(
+            viewConfig = ViewConfigItem(
+                fontSize = FontSize.HUGE,
+                uiMode = UiMode.DAY,
             ),
             bulletTexts = repeatedItem(7, R.string.largest),
             dialogWidth = DialogWidth.NARROW,
