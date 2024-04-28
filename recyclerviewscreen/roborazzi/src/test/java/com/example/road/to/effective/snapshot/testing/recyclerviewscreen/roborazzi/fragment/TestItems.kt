@@ -1,16 +1,23 @@
 package com.example.road.to.effective.snapshot.testing.recyclerviewscreen.roborazzi.fragment
 
+import com.example.road.to.effective.snapshot.testing.recyclerviewscreen.R
 import sergio.sastre.uitesting.utils.common.FontSize
 import sergio.sastre.uitesting.utils.common.Orientation
 import sergio.sastre.uitesting.utils.common.UiMode
 import sergio.sastre.uitesting.utils.fragmentscenario.FragmentConfigItem
-import  com.example.road.to.effective.snapshot.testing.recyclerviewscreen.R
 
 enum class HappyPathTestItem(val item: FragmentConfigItem) {
     PORTRAIT(
         FragmentConfigItem(
             locale = "en",
             uiMode = UiMode.DAY,
+            fontSize = FontSize.NORMAL,
+        ),
+    ),
+    PORTRAIT_NIGHT(
+        FragmentConfigItem(
+            locale = "en",
+            uiMode = UiMode.NIGHT,
             fontSize = FontSize.NORMAL,
         ),
     ),
@@ -41,6 +48,14 @@ enum class UnhappyPathTestItem(val item: FragmentConfigItem) {
         ),
     ),
     LANDSCAPE_NIGHT(
+        FragmentConfigItem(
+            locale = "en",
+            uiMode = UiMode.NIGHT,
+            orientation = Orientation.LANDSCAPE,
+            fontSize = FontSize.NORMAL,
+        ),
+    ),
+    LANDSCAPE_DAY(
         FragmentConfigItem(
             locale = "en",
             uiMode = UiMode.NIGHT,
