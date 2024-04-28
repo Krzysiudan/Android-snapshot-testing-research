@@ -2,8 +2,8 @@ package com.example.road.to.effective.snapshot.testing.lazycolumnscreen
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.MaterialTheme
@@ -12,7 +12,6 @@ import androidx.compose.material.SnackbarDuration
 import androidx.compose.material.SnackbarHost
 import androidx.compose.material.SnackbarHostState
 import androidx.compose.material.SnackbarResult
-import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
@@ -23,6 +22,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
@@ -58,14 +58,15 @@ fun CoffeeDrinksScreenUI(
     coffeeShopName: String,
     onCoffeeDrinkItemClick: () -> Unit,
 ) {
-    Surface {
-        Column {
-            CoffeeDrinkAppBar(coffeeShopName)
-            CoffeeDrinkList(
-                coffeeDrinksState = coffeeDrinksState,
-                onCoffeeDrinkItemClick = onCoffeeDrinkItemClick,
-            )
-        }
+    Scaffold(
+        modifier = Modifier.fillMaxSize(),
+        topBar = { CoffeeDrinkAppBar(coffeeShopName) }
+    ) { paddingValues ->
+        CoffeeDrinkListView(
+            coffeeDrinksState = coffeeDrinksState,
+            onCoffeeDrinkItemClick = onCoffeeDrinkItemClick,
+            modifier = Modifier.padding(paddingValues)
+        )
     }
 }
 
@@ -94,18 +95,17 @@ fun String.addLocation(location: String): String =
     }
 
 @Composable
-fun CoffeeDrinkList(
+fun CoffeeDrinkListView(
     coffeeDrinksState: CoffeeDrinksState,
     onCoffeeDrinkItemClick: () -> Unit,
+    modifier: Modifier = Modifier,
 ) {
-    LazyColumn {
+    LazyColumn(modifier = modifier.fillMaxSize()) {
         items(items = coffeeDrinksState.coffeeDrinks) { coffeeDrink ->
-            Box {
-                CoffeeDrinkList(
-                    modifier = Modifier.clickable { onCoffeeDrinkItemClick() },
-                    coffeeDrink = coffeeDrink,
-                )
-            }
+            CoffeeDrinkListItemWithDivider(
+                modifier = Modifier.clickable { onCoffeeDrinkItemClick() },
+                coffeeDrink = coffeeDrink,
+            )
         }
     }
 }
@@ -126,5 +126,19 @@ fun ActionNotSupportedSnackbar(
             SnackbarResult.Dismissed -> onDismiss()
             SnackbarResult.ActionPerformed -> {}
         }
+    }
+}
+
+@Preview
+@Composable
+fun CoffeeDrinksScreenPreview() {
+    val coffeeDrinks = DummyCoffeeDrinksDataSource().getCoffeeDrinks().map { coffeeDrink ->
+        CoffeeDrinkItemMapper().map(coffeeDrink)
+    }
+    AppTheme {
+        CoffeeDrinksScreenUI(
+            coffeeDrinksState = CoffeeDrinksState(coffeeDrinks),
+            coffeeShopName = "Coffee Drinks Shop"
+        ) {}
     }
 }

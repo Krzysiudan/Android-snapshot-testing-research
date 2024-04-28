@@ -1,7 +1,7 @@
 package com.example.road.to.effective.snapshot.testing.lazycolumnscreen.crosslibrary.parameterized
 
 import com.example.road.to.effective.snapshot.testing.lazycolumnscreen.AppTheme
-import com.example.road.to.effective.snapshot.testing.lazycolumnscreen.CoffeeDrinkList
+import com.example.road.to.effective.snapshot.testing.lazycolumnscreen.CoffeeDrinkListItemWithDivider
 import com.example.road.to.effective.snapshot.testing.lazycolumnscreen.crosslibrary.utils.defaultCrossLibraryScreenshotTestRule
 import com.example.road.to.effective.snapshot.testing.lazycolumnscreen.crosslibrary.utils.sdkVersion
 import com.example.road.to.effective.snapshot.testing.testannotations.HappyPath
@@ -63,7 +63,7 @@ class CoffeeDrinkListComposableParameterizedHappyPathTest(
             name = "CoffeeDrinkListComposable_${testItem.name}_Parameterized_API_$sdkVersion"
         ) {
             AppTheme {
-                CoffeeDrinkList(coffeeDrink = coffeeDrink)
+                CoffeeDrinkListItemWithDivider(coffeeDrink = coffeeDrink)
             }
         }
     }
@@ -92,7 +92,7 @@ class CoffeeDrinkListComposableParameterizedUnhappyPathTest(
             name = "CoffeeDrinkListComposable_${testItem.name}_Parameterized_API_$sdkVersion"
         ) {
             AppTheme {
-                CoffeeDrinkList(coffeeDrink = coffeeDrink)
+                CoffeeDrinkListItemWithDivider(coffeeDrink = coffeeDrink)
             }
         }
     }

@@ -23,7 +23,17 @@ enum class HappyPathTestItem(val item: DeviceConfig) {
             fontScale = 1.0f,
             displaySize = DisplaySize.NORMAL,
         ),
+    ),
+    PORTRAIT_NIGHT(
+        DeviceConfig(
+            locale = "en",
+            phoneOrientation = PhoneOrientation.LANDSCAPE,
+            nightMode = NightMode.NIGHT,
+            fontScale = 1.0f,
+            displaySize = DisplaySize.NORMAL,
+        ),
     )
+
 }
 
 enum class UnhappyPathTestItem(val item: DeviceConfig) {
@@ -36,7 +46,25 @@ enum class UnhappyPathTestItem(val item: DeviceConfig) {
             displaySize = DisplaySize.NORMAL,
         ),
     ),
-    HUGE(
+    LANDSCAPE_DAY(
+        DeviceConfig(
+            locale = "en",
+            phoneOrientation = PhoneOrientation.LANDSCAPE,
+            nightMode = NightMode.NOTNIGHT,
+            fontScale = 1.0f,
+            displaySize = DisplaySize.NORMAL,
+        ),
+    ),
+    LANDSCAPE_HUGE_FONT_SMALL_SCREEN(
+        DeviceConfig(
+            locale = "en",
+            phoneOrientation = PhoneOrientation.LANDSCAPE,
+            nightMode = NightMode.NOTNIGHT,
+            fontScale = 1.3f,
+            displaySize = DisplaySize.SMALL,
+        ),
+    ),
+    HUGE_FONT_NORMAL_SCREEN(
         DeviceConfig(
             locale = "en",
             phoneOrientation = PhoneOrientation.PORTRAIT,
@@ -50,8 +78,35 @@ enum class UnhappyPathTestItem(val item: DeviceConfig) {
             locale = "ar-rXB",
             phoneOrientation = PhoneOrientation.PORTRAIT,
             nightMode = NightMode.NOTNIGHT,
+            fontScale = 1.3f,
+            displaySize = DisplaySize.LARGEST,
+        ),
+    ),
+    HUGE_FONT_SMALL_SCREEN(
+        DeviceConfig(
+            locale = "en",
+            phoneOrientation = PhoneOrientation.PORTRAIT,
+            nightMode = NightMode.NOTNIGHT,
+            fontScale = 1.3f,
+            displaySize = DisplaySize.SMALL,
+        ),
+    ),
+    AR_XB_SMALL_FONT(
+        DeviceConfig(
+            locale = "ar",
+            phoneOrientation = PhoneOrientation.PORTRAIT,
+            nightMode = NightMode.NOTNIGHT,
             fontScale = 0.85f,
             displaySize = DisplaySize.NORMAL,
+        ),
+    ),
+    AR_XB_HUGE_FONT_SMALL_SCREEN(
+        DeviceConfig(
+            locale = "ar",
+            phoneOrientation = PhoneOrientation.PORTRAIT,
+            nightMode = NightMode.NOTNIGHT,
+            fontScale = 1.3f,
+            displaySize = DisplaySize.SMALL,
         ),
     )
 }

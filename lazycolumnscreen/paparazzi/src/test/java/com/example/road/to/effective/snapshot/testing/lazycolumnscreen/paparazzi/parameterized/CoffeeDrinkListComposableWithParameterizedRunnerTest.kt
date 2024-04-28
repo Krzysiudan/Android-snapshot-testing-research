@@ -4,7 +4,8 @@ import app.cash.paparazzi.DeviceConfig
 import app.cash.paparazzi.Paparazzi
 import com.android.ide.common.rendering.api.SessionParams
 import com.example.road.to.effective.snapshot.testing.lazycolumnscreen.AppTheme
-import com.example.road.to.effective.snapshot.testing.lazycolumnscreen.CoffeeDrinkList
+import com.example.road.to.effective.snapshot.testing.lazycolumnscreen.CoffeeDrinksScreenPreview
+import com.example.road.to.effective.snapshot.testing.lazycolumnscreen.paparazzi.utils.PhoneOrientation
 import com.example.road.to.effective.snapshot.testing.lazycolumnscreen.paparazzi.utils.setDisplaySize
 import com.example.road.to.effective.snapshot.testing.lazycolumnscreen.paparazzi.utils.setPhoneOrientation
 import org.junit.Test
@@ -43,18 +44,17 @@ class CoffeeDrinkListComposableParameterizedHappyPathTest(
                 nightMode = testItem.item.nightMode,
                 fontScale = testItem.item.fontScale,
                 locale = testItem.item.locale,
-            ).setPhoneOrientation(testItem.item.phoneOrientation),
-            renderingMode = SessionParams.RenderingMode.V_SCROLL,
+                orientation = testItem.item.phoneOrientation.toPaparazzi()
+            )
         )
+
 
     @Test
     fun snapComposable() {
         paparazzi.context.setDisplaySize(testItem.item.displaySize)
 
         paparazzi.snapshot(name = "CoffeeDrinkListComposable_${testItem.name}_Parameterized") {
-            AppTheme {
-                CoffeeDrinkList(coffeeDrink = coffeeDrink)
-            }
+                CoffeeDrinksScreenPreview()
         }
     }
 }
@@ -76,8 +76,10 @@ class CoffeeDrinkListComposableParameterizedUnhappyPathTest(
             nightMode = testItem.item.nightMode,
             fontScale = testItem.item.fontScale,
             locale = testItem.item.locale,
-        ).setPhoneOrientation(testItem.item.phoneOrientation),
-        renderingMode = SessionParams.RenderingMode.V_SCROLL,
+            orientation = testItem.item.phoneOrientation.toPaparazzi(),
+            screenHeight = if(testItem.item.phoneOrientation == PhoneOrientation.PORTRAIT) DeviceConfig.PIXEL_5.screenHeight else DeviceConfig.PIXEL_5.screenWidth,
+            screenWidth = if(testItem.item.phoneOrientation == PhoneOrientation.PORTRAIT) DeviceConfig.PIXEL_5.screenWidth else DeviceConfig.PIXEL_5.screenHeight,
+        )
     )
 
     @Test
@@ -86,7 +88,7 @@ class CoffeeDrinkListComposableParameterizedUnhappyPathTest(
 
         paparazzi.snapshot(name = "CoffeeDrinkListComposable_${testItem.name}_Parameterized") {
             AppTheme {
-                CoffeeDrinkList(coffeeDrink = coffeeDrink)
+                CoffeeDrinksScreenPreview()
             }
         }
     }

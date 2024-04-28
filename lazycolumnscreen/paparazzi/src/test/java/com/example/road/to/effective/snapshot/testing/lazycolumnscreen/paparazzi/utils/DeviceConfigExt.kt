@@ -5,7 +5,14 @@ import com.android.resources.ScreenOrientation
 
 enum class PhoneOrientation {
     PORTRAIT,
-    LANDSCAPE,
+    LANDSCAPE, ;
+
+    fun toPaparazzi(): ScreenOrientation =
+        when (this) {
+            PORTRAIT -> ScreenOrientation.PORTRAIT
+            LANDSCAPE -> ScreenOrientation.LANDSCAPE
+        }
+
 }
 
 fun DeviceConfig.setPhoneOrientation(
