@@ -21,9 +21,6 @@ include ':recyclerviewscreen:dropshots'
 include ':recyclerviewscreen:shot'
 include ':recyclerviewscreen:paparazzi'
 include ':recyclerviewscreen:roborazzi'
-include ':dialogs:shot+roborazzi'
-include ':lazycolumnscreen:dropshots+paparazzi'
-include ':recyclerviewscreen:dropshots+roborazzi'
 include ':testannotations'
 
 dependencyResolutionManagement {
