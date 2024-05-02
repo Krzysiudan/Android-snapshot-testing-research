@@ -27,3 +27,55 @@ buildscript {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+task runDropshotScreenshotRecording {
+    doLast {
+        println 'Executing all Dropshot screenshots recording...'
+    }
+}
+
+tasks.named('runDropshotScreenshotRecording') {
+    dependsOn(
+            'dialogs:dropshots:connectedAndroidTest',
+            'recyclerviewscreen:dropshots:connectedAndroidTest',
+            'lazycolumnscreen:dropshots:connectedAndroidTest'
+    )
+}
+
+// Setting the project property for all tasks
+gradle.projectsEvaluated {
+    tasks.withType(Test) {
+        if (project.hasProperty('dropshots.record')) {
+            systemProperty 'dropshots.record', project.getProperty('dropshots.record')
+        }
+    }
+}
+
+task runTestifyScreenshotClearing {
+    doLast {
+        println 'Executing all Testify screenshots clearing...'
+    }
+}
+
+tasks.named('runTestifyScreenshotClearing') {
+    dependsOn(
+            'clean',
+            'dialogs:android-testify:screenshotClear',
+            'recyclerviewscreen:android-testify:screenshotClear',
+            'lazycolumnscreen:android-testify:screenshotClear'
+    )
+}
+
+task runTestifyScreenshotRecording {
+    doLast {
+        println 'Executing all Testify screenshots recording...'
+    }
+}
+
+tasks.named('runTestifyScreenshotRecording') {
+    dependsOn(
+            'dialogs:android-testify:screenshotRecord',
+            'recyclerviewscreen:android-testify:screenshotRecord',
+            'lazycolumnscreen:android-testify:screenshotRecord'
+    )
+}
