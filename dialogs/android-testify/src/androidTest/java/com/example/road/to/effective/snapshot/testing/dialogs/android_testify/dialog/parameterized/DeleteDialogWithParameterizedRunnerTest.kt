@@ -145,7 +145,6 @@ class DeleteDialogParameterizedUnhappyPathTest(
                 dialog.show()
                 dialog.window!!.decorView
             }
-            .withExperimentalFeatureEnabled(GenerateDiffs)
             .assertSame(name = "DeleteDialog_${testItem.name}_Parameterized")
     }
 }

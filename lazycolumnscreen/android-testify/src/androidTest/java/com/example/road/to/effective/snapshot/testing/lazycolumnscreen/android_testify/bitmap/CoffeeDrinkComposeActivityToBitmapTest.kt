@@ -1,5 +1,6 @@
 package com.example.road.to.effective.snapshot.testing.lazycolumnscreen.android_testify.bitmap
 
+import android.content.pm.ActivityInfo
 import com.example.road.to.effective.snapshot.testing.lazycolumnscreen.CoffeeDrinksComposeActivity
 import com.example.road.to.effective.snapshot.testing.testannotations.BitmapTest
 import dev.testify.ScreenshotRule
@@ -12,6 +13,7 @@ import org.junit.Rule
 import org.junit.Test
 import sergio.sastre.uitesting.android_testify.assertSame
 import sergio.sastre.uitesting.utils.testrules.animations.DisableAnimationsRule
+import sergio.sastre.uitesting.utils.testrules.locale.SystemLocaleTestRule
 
 /**
  * Execute the command below to run only BitmapTests
@@ -34,13 +36,19 @@ import sergio.sastre.uitesting.utils.testrules.animations.DisableAnimationsRule
  */
 class CoffeeDrinkComposeActivityToBitmapTest {
 
+    @get:Rule
+    val systemLocale = SystemLocaleTestRule("en")
+
     @get:Rule(order = 0)
     val disableAnimationsRule = DisableAnimationsRule()
 
     @get:Rule(order = 1)
     val activityScreenshotRule =
         ScreenshotRule(
-            configuration = TestifyConfiguration(exactness = 0.85f),
+            configuration = TestifyConfiguration(
+                exactness = 0.85f,
+                orientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+            ),
             activityClass = CoffeeDrinksComposeActivity::class.java
         )
 

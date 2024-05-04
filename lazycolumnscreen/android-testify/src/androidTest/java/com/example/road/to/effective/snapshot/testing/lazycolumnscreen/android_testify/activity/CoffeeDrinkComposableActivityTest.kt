@@ -1,6 +1,7 @@
 package com.example.road.to.effective.snapshot.testing.lazycolumnscreen.android_testify.activity
 
 import android.content.pm.ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
+import android.content.pm.ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 import com.example.road.to.effective.snapshot.testing.lazycolumnscreen.CoffeeDrinksComposeActivity
 import com.example.road.to.effective.snapshot.testing.testannotations.ActivityTest
 import com.example.road.to.effective.snapshot.testing.testannotations.HappyPath
@@ -47,7 +48,7 @@ class CoffeeDrinkComposeActivityHappyPathTest {
     @get:Rule
     val activityScreenshotRule =
         ScreenshotRule(
-            configuration = TestifyConfiguration(exactness = 0.85f),
+            configuration = TestifyConfiguration(exactness = 0.85f, orientation = SCREEN_ORIENTATION_PORTRAIT),
             activityClass = CoffeeDrinksComposeActivity::class.java
         )
 
@@ -69,7 +70,7 @@ class CoffeeDrinkComposeActivityUnhappyPathTest {
     val inAppLocale = InAppLocaleTestRule("ar_XB")
 
     @get:Rule
-    val systemLocale = SystemLocaleTestRule("en_XA")
+    val systemLocale = SystemLocaleTestRule("ar_XB")
 
     @get:Rule
     val fontSize = FontSizeTestRule(FontSize.HUGE)

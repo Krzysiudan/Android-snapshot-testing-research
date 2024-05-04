@@ -40,9 +40,9 @@ enum class UnhappyPathTestItem(val item: FragmentConfigItem) {
             fontSize = FontSize.NORMAL,
         ),
     ),
-    AR_XB_HUGE(
+    HUGE_FONT(
         FragmentConfigItem(
-            locale = "ar_XB",
+            locale = "en",
             uiMode = UiMode.DAY,
             fontSize = FontSize.HUGE,
         ),

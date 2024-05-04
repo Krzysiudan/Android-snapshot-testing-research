@@ -53,7 +53,7 @@ enum class UnhappyPathTestItem(val deleteItem: DeleteDialogTestItem) {
                 uiMode = UiMode.NIGHT,
             ),
             bulletTexts = listOf(R.string.shortest),
-            dialogWidth = DialogWidth.WIDE,
+            dialogWidth = DialogWidth.NORMAL,
         ),
     ),
     SPACIOUS_DAY(
@@ -63,7 +63,7 @@ enum class UnhappyPathTestItem(val deleteItem: DeleteDialogTestItem) {
                 uiMode = UiMode.DAY,
             ),
             bulletTexts = listOf(R.string.shortest),
-            dialogWidth = DialogWidth.WIDE,
+            dialogWidth = DialogWidth.NORMAL,
         ),
     ),
     SUFFOCATED_NIGHT(
@@ -73,7 +73,7 @@ enum class UnhappyPathTestItem(val deleteItem: DeleteDialogTestItem) {
                 uiMode = UiMode.NIGHT,
             ),
             bulletTexts = repeatedItem(7, R.string.largest),
-            dialogWidth = DialogWidth.NARROW,
+            dialogWidth = DialogWidth.NORMAL,
         ),
     ),
     SUFFOCATED_DAY(
@@ -83,7 +83,7 @@ enum class UnhappyPathTestItem(val deleteItem: DeleteDialogTestItem) {
                 uiMode = UiMode.DAY,
             ),
             bulletTexts = repeatedItem(7, R.string.largest),
-            dialogWidth = DialogWidth.NARROW,
+            dialogWidth = DialogWidth.NORMAL,
         ),
     ),
 }

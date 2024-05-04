@@ -85,7 +85,7 @@ class CoffeeDrinkComposeFragmentUnhappyPathTest {
                 locale = "ar_XB",
                 uiMode = UiMode.NIGHT,
                 fontSize = FontSize.SMALL,
-                displaySize = DisplaySize.SMALL,
+                displaySize = DisplaySize.NORMAL,
                 orientation = Orientation.LANDSCAPE
             ),
         )
