@@ -26,6 +26,9 @@ buildscript {
 
 task clean(type: Delete) {
     delete rootProject.buildDir
+    doLast {
+        'clean'
+    }
 }
 
 task runDropshotScreenshotRecording {
@@ -60,9 +63,6 @@ task runTestifyScreenshotClearing {
 tasks.named('runTestifyScreenshotClearing') {
     dependsOn(
             'clean',
-            'dialogs:android-testify:screenshotClear',
-            'recyclerviewscreen:android-testify:screenshotClear',
-            'lazycolumnscreen:android-testify:screenshotClear'
     )
 }
 
@@ -74,8 +74,52 @@ task runTestifyScreenshotRecording {
 
 tasks.named('runTestifyScreenshotRecording') {
     dependsOn(
-            'dialogs:android-testify:screenshotRecord',
-            'recyclerviewscreen:android-testify:screenshotRecord',
-            'lazycolumnscreen:android-testify:screenshotRecord'
+            'dialogs:android-testify:pixel3api30DebugAndroidTest',
+            'recyclerviewscreen:android-testify:pixel3api30DebugAndroidTest',
+            'lazycolumnscreen:android-testify:pixel3api30DebugAndroidTest'
     )
 }
+
+task runTestifyScreenshotVerifying {
+    doLast {
+        println 'Executing all Testify screenshots verifying...'
+    }
+}
+
+tasks.named('runTestifyScreenshotVerifying') {
+    dependsOn(
+            'dialogs:android-testify:pixel3api30DebugAndroidTest',
+            'recyclerviewscreen:android-testify:pixel3api30DebugAndroidTest',
+            'lazycolumnscreen:android-testify:pixel3api30DebugAndroidTest'
+    )
+}
+
+// Setting the project property for all tasks
+gradle.projectsEvaluated {
+    tasks.withType(Test) {
+        if (project.hasProperty('recordModeGmd')) {
+            systemProperty 'recordModeGmd', project.getProperty('recordModeGmd')
+        }
+        if (project.hasProperty('useTestStorage')) {
+            systemProperty 'useTestStorage', project.getProperty('useTestStorage')
+        }
+        if (project.hasProperty('devices')) {
+            systemProperty 'devices', project.getProperty('devices')
+        }
+    }
+}
+
+task runTestifyScreenshotCopying {
+    doLast {
+        println 'Executing all Testify screenshots copying...'
+    }
+}
+
+tasks.named('runTestifyScreenshotCopying') {
+    dependsOn(
+            'dialogs:android-testify:copyScreenshots',
+            'recyclerviewscreen:android-testify:copyScreenshots',
+            'lazycolumnscreen:android-testify:copyScreenshots'
+    )
+}
+
