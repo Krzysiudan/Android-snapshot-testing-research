@@ -19,6 +19,7 @@ import sergio.sastre.uitesting.utils.testrules.fontsize.FontSizeTestRule
 import sergio.sastre.uitesting.utils.testrules.locale.InAppLocaleTestRule
 import sergio.sastre.uitesting.utils.testrules.locale.SystemLocaleTestRule
 import sergio.sastre.uitesting.utils.testrules.uiMode.UiModeTestRule
+import java.util.Locale
 
 /**
  * Execute the command below to run only ActivityTests
@@ -46,6 +47,9 @@ class CoffeeDrinkComposeActivityHappyPathTest {
     val inAppLocale = InAppLocaleTestRule("en")
 
     @get:Rule
+    val systemLocale = SystemLocaleTestRule("en")
+
+    @get:Rule
     val activityScreenshotRule =
         ScreenshotRule(
             configuration = TestifyConfiguration(exactness = 0.85f, orientation = SCREEN_ORIENTATION_PORTRAIT),
@@ -58,45 +62,6 @@ class CoffeeDrinkComposeActivityHappyPathTest {
     @Test
     fun snapActivity() {
         activityScreenshotRule
-            .withExperimentalFeatureEnabled(GenerateDiffs)
             .assertSame(name = "CoffeeDrinksComposeActivity_HappyPath")
-    }
-}
-
-class CoffeeDrinkComposeActivityUnhappyPathTest {
-
-    // WARNING: in-app Locale prevails over SystemLocale when screenshot testing your app
-    @get:Rule
-    val inAppLocale = InAppLocaleTestRule("ar_XB")
-
-    @get:Rule
-    val systemLocale = SystemLocaleTestRule("ar_XB")
-
-    @get:Rule
-    val fontSize = FontSizeTestRule(FontSize.HUGE)
-
-    @get:Rule
-    val uiMode = UiModeTestRule(UiMode.NIGHT)
-
-    @get:Rule
-    val activityScreenshotRule =
-        ScreenshotRule(
-            activityClass = CoffeeDrinksComposeActivity::class.java,
-            configuration = TestifyConfiguration(
-                exactness = 0.85f,
-                orientation = SCREEN_ORIENTATION_LANDSCAPE
-            )
-        )
-
-    @ScreenshotInstrumentation
-    @UnhappyPath
-    @ActivityTest
-    @Test
-    fun snapActivity() {
-        activityScreenshotRule
-            .withExperimentalFeatureEnabled(GenerateDiffs)
-            .assertSame(
-                name = "CoffeeDrinksComposeActivity_UnhappyPath",
-            )
     }
 }

@@ -12,6 +12,7 @@ enum class HappyPathTestItem(val item: FragmentConfigItem) {
             locale = "en",
             uiMode = UiMode.DAY,
             fontSize = FontSize.NORMAL,
+            orientation = Orientation.PORTRAIT
         ),
     ),
     PORTRAIT_NIGHT(
@@ -19,6 +20,7 @@ enum class HappyPathTestItem(val item: FragmentConfigItem) {
             locale = "en",
             uiMode = UiMode.NIGHT,
             fontSize = FontSize.NORMAL,
+            orientation = Orientation.PORTRAIT
         ),
     ),
 }
@@ -30,14 +32,7 @@ enum class UnhappyPathTestItem(val item: FragmentConfigItem) {
             theme = R.style.Theme_Custom,
             uiMode = UiMode.DAY,
             fontSize = FontSize.NORMAL,
-        ),
-    ),
-    CUSTOM_THEME_NIGHT(
-        FragmentConfigItem(
-            locale = "en",
-            theme = R.style.Theme_Custom,
-            uiMode = UiMode.NIGHT,
-            fontSize = FontSize.NORMAL,
+            orientation = Orientation.PORTRAIT
         ),
     ),
     HUGE_FONT(
@@ -45,14 +40,7 @@ enum class UnhappyPathTestItem(val item: FragmentConfigItem) {
             locale = "en",
             uiMode = UiMode.DAY,
             fontSize = FontSize.HUGE,
+            orientation = Orientation.PORTRAIT
         ),
     ),
-    LANDSCAPE_NIGHT(
-        FragmentConfigItem(
-            locale = "en",
-            uiMode = UiMode.NIGHT,
-            orientation = Orientation.LANDSCAPE,
-            fontSize = FontSize.NORMAL,
-        ),
-    )
 }

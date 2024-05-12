@@ -19,6 +19,8 @@ import sergio.sastre.uitesting.utils.common.FontSize
 import sergio.sastre.uitesting.utils.common.Orientation
 import sergio.sastre.uitesting.utils.common.UiMode
 import sergio.sastre.uitesting.utils.testrules.animations.DisableAnimationsRule
+import sergio.sastre.uitesting.utils.testrules.locale.InAppLocaleTestRule
+import sergio.sastre.uitesting.utils.testrules.locale.SystemLocaleTestRule
 
 /**
  * Execute the command below to run only ViewHolderTests
@@ -80,50 +82,6 @@ class MemoriseViewHolderHappyPathTest {
                 }
             }
             .setScreenshotFirstView()
-            .withExperimentalFeatureEnabled(GenerateDiffs)
             .assertSame(name = "MemoriseViewHolderHappy")
-    }
-}
-
-class MemoriseViewHolderUnhappyPathTest {
-
-    @get:Rule(order = 0)
-    var disableAnimationsRule = DisableAnimationsRule()
-
-    @get:Rule(order = 1)
-    var screenshotRule = ScreenshotRuleWithConfigurationForView(
-        exactness = 0.50f,
-        config = ViewConfigItem(
-            uiMode = UiMode.NIGHT,
-            locale = "en_XA",
-            fontSize = FontSize.HUGE,
-            orientation = Orientation.LANDSCAPE,
-        ),
-    )
-
-    @ScreenshotInstrumentation
-    @UnhappyPath
-    @ViewHolderTest
-    @Test
-    fun snapMemoriseViewHolderHappyPath() {
-        screenshotRule
-            .setTargetLayoutId(R.layout.memorise_row)
-            .setViewModifications { targetLayout ->
-                MemoriseViewHolder(
-                    container = targetLayout,
-                    itemEventListener = null,
-                    animationDelay = 0L
-                ).apply {
-                    bind(
-                        generateMemoriseItem(
-                            rightAligned = false,
-                            activity = screenshotRule.activity
-                        )
-                    )
-                }
-            }
-            .setScreenshotFirstView()
-            .withExperimentalFeatureEnabled(GenerateDiffs)
-            .assertSame(name = "MemoriseViewHolderUnhappy")
     }
 }

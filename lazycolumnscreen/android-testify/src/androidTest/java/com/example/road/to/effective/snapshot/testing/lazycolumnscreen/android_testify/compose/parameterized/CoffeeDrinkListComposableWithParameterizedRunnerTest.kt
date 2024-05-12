@@ -14,6 +14,8 @@ import org.junit.runners.Parameterized
 import sergio.sastre.uitesting.android_testify.ComposableScreenshotRuleWithConfiguration
 import sergio.sastre.uitesting.android_testify.assertSame
 import sergio.sastre.uitesting.utils.testrules.animations.DisableAnimationsRule
+import sergio.sastre.uitesting.utils.testrules.locale.InAppLocaleTestRule
+import sergio.sastre.uitesting.utils.testrules.locale.SystemLocaleTestRule
 
 /**
  * Execute the command below to run only ComposableTests
@@ -76,7 +78,6 @@ class CoffeeDrinkListComposableParameterizedHappyPathTest(
                     CoffeeDrinksScreenPreview()
                 }
             }
-            .withExperimentalFeatureEnabled(GenerateDiffs)
             .assertSame(
                 name = "${testItem.name}_Parameterized"
             )
@@ -114,7 +115,6 @@ class CoffeeDrinkListComposableParameterizedUnhappyPathTest(
                     CoffeeDrinksScreenPreview()
                 }
             }
-            .withExperimentalFeatureEnabled(GenerateDiffs)
             .assertSame(
                 name = "${testItem.name}_Parameterized"
             )

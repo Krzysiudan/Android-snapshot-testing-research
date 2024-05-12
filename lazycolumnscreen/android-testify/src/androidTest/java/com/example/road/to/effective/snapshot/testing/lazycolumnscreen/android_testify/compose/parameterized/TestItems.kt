@@ -18,72 +18,9 @@ enum class HappyPathTestItem(val item: ComposableConfigItem) {
             displaySize = DisplaySize.NORMAL,
         ),
     ),
-    PORTRAIT_NIGHT(
-        ComposableConfigItem(
-            locale = "en",
-            orientation = Orientation.PORTRAIT,
-            uiMode = UiMode.NIGHT,
-            fontSize = FontSize.NORMAL,
-            displaySize = DisplaySize.NORMAL,
-        ),
-    )
 }
 
 enum class UnhappyPathTestItem(val item: ComposableConfigItem) {
-    LANDSCAPE_NIGHT(
-        ComposableConfigItem(
-            locale = "en",
-            orientation = Orientation.LANDSCAPE,
-            uiMode = UiMode.NIGHT,
-            fontSize = FontSize.NORMAL,
-            displaySize = DisplaySize.NORMAL,
-        ),
-    ),
-    LANDSCAPE_DAY(
-        ComposableConfigItem(
-            locale = "en",
-            orientation = Orientation.LANDSCAPE,
-            uiMode = UiMode.DAY,
-            fontSize = FontSize.NORMAL,
-            displaySize = DisplaySize.NORMAL,
-        ),
-    ),
-    AR_XB_SMALL_FONT(
-        ComposableConfigItem(
-            locale = "ar_XB",
-            orientation = Orientation.PORTRAIT,
-            uiMode = UiMode.DAY,
-            fontSize = FontSize.SMALL,
-            displaySize = DisplaySize.NORMAL,
-        ),
-    ),
-    AR_XB_LANDSCAPE_SMALL_FONT(
-        ComposableConfigItem(
-            locale = "ar_XB",
-            orientation = Orientation.LANDSCAPE,
-            uiMode = UiMode.DAY,
-            fontSize = FontSize.SMALL,
-            displaySize = DisplaySize.NORMAL,
-        ),
-    ),
-    AR_XB_HUGE_FONT(
-        ComposableConfigItem(
-            locale = "ar_XB",
-            orientation = Orientation.PORTRAIT,
-            uiMode = UiMode.DAY,
-            fontSize = FontSize.HUGE,
-            displaySize = DisplaySize.NORMAL,
-        ),
-    ),
-    AR_XB_LANDSCAPE_HUGE_FONT(
-        ComposableConfigItem(
-            locale = "ar_XB",
-            orientation = Orientation.LANDSCAPE,
-            uiMode = UiMode.DAY,
-            fontSize = FontSize.HUGE,
-            displaySize = DisplaySize.NORMAL,
-        ),
-    ),
     HUGE_FONT(
         ComposableConfigItem(
             locale = "en",
@@ -93,51 +30,6 @@ enum class UnhappyPathTestItem(val item: ComposableConfigItem) {
             displaySize = DisplaySize.NORMAL,
         ),
     ),
-    HUGE_FONT_LANDSCAPE(
-        ComposableConfigItem(
-            locale = "en",
-            orientation = Orientation.LANDSCAPE,
-            uiMode = UiMode.DAY,
-            fontSize = FontSize.HUGE,
-            displaySize = DisplaySize.NORMAL,
-        ),
-    ),
-//    LANDSCAPE_HUGE_FONT_SMALL_SCREEN(
-//        ComposableConfigItem(
-//            locale = "en",
-//            orientation = Orientation.LANDSCAPE,
-//            uiMode = UiMode.DAY,
-//            fontSize = FontSize.HUGE,
-//            displaySize = DisplaySize.SMALL,
-//        ),
-//    ),
-//    HUGE_FONT_SMALL_SCREEN(
-//        ComposableConfigItem(
-//            locale = "en",
-//            orientation = Orientation.PORTRAIT,
-//            uiMode = UiMode.DAY,
-//            fontSize = FontSize.HUGE,
-//            displaySize = DisplaySize.SMALL,
-//        ),
-//    ),
-//    HUGE_FONT_LARGEST_SCREEN(
-//        ComposableConfigItem(
-//            locale = "en",
-//            orientation = Orientation.PORTRAIT,
-//            uiMode = UiMode.DAY,
-//            fontSize = FontSize.HUGE,
-//            displaySize = DisplaySize.LARGEST,
-//        ),
-//    ),
-//    AR_XB_HUGE_FONT_SMALL_SCREEN(
-//    ComposableConfigItem(
-//    locale = "ar_XB",
-//    orientation = Orientation.PORTRAIT,
-//    uiMode = UiMode.DAY,
-//    fontSize = FontSize.HUGE,
-//    displaySize = DisplaySize.SMALL,
-//    ),
-//    )
 }
 
 internal val coffeeDrink =

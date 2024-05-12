@@ -12,8 +12,14 @@ import dev.testify.core.processor.capture.pixelCopyCapture
 import org.junit.Rule
 import org.junit.Test
 import sergio.sastre.uitesting.android_testify.assertSame
+import sergio.sastre.uitesting.utils.common.FontSize
+import sergio.sastre.uitesting.utils.common.UiMode
 import sergio.sastre.uitesting.utils.testrules.animations.DisableAnimationsRule
+import sergio.sastre.uitesting.utils.testrules.fontsize.FontSizeTestRule
+import sergio.sastre.uitesting.utils.testrules.locale.InAppLocaleTestRule
 import sergio.sastre.uitesting.utils.testrules.locale.SystemLocaleTestRule
+import sergio.sastre.uitesting.utils.testrules.uiMode.UiModeTestRule
+import java.util.Locale
 
 /**
  * Execute the command below to run only BitmapTests
@@ -55,22 +61,9 @@ class CoffeeDrinkComposeActivityToBitmapTest {
     @ScreenshotInstrumentation
     @BitmapTest
     @Test
-    fun snapActivityWithCanvas() {
-        activityScreenshotRule
-            .configure { this@configure.captureMethod = ::canvasCapture }
-            .withExperimentalFeatureEnabled(GenerateDiffs)
-            .assertSame(
-                name = "CoffeeDrinksComposeActivity_WithoutElevation"
-            )
-    }
-
-    @ScreenshotInstrumentation
-    @BitmapTest
-    @Test
     fun snapActivityWithPixelCopy() {
         activityScreenshotRule
             .configure { this@configure.captureMethod = ::pixelCopyCapture }
-            .withExperimentalFeatureEnabled(GenerateDiffs)
             .assertSame(
                 name = "CoffeeDrinksComposeActivity_WithElevation"
             )

@@ -16,6 +16,8 @@ import org.junit.runners.Parameterized
 import sergio.sastre.uitesting.android_testify.ScreenshotRuleWithConfigurationForFragment
 import sergio.sastre.uitesting.android_testify.assertSame
 import sergio.sastre.uitesting.utils.testrules.animations.DisableAnimationsRule
+import sergio.sastre.uitesting.utils.testrules.locale.InAppLocaleTestRule
+import sergio.sastre.uitesting.utils.testrules.locale.SystemLocaleTestRule
 
 /**
  * Execute the command below to run only FragmentTests
@@ -68,7 +70,6 @@ class LanguageTrainingFragmentParameterizedHappyPathTest(
     @Test
     fun snapFragment() {
         activityScreenshotRule
-            .withExperimentalFeatureEnabled(GenerateDiffs)
             .assertSame(
                 name = "LanguageTrainingFragment_${testItem.name}_Parameterized"
             )
@@ -103,7 +104,6 @@ class LanguageTrainingFragmentParameterizedUnhappyPathTest(
     @Test
     fun snapFragment() {
         activityScreenshotRule
-            .withExperimentalFeatureEnabled(GenerateDiffs)
             .assertSame(
                 name = "LanguageTrainingFragment_${testItem.name}_Parameterized"
             )
