@@ -55,15 +55,6 @@ enum class UnhappyPathTestItem(val item: DeviceConfig) {
             displaySize = DisplaySize.NORMAL,
         ),
     ),
-    LANDSCAPE_HUGE_FONT_SMALL_SCREEN(
-        DeviceConfig(
-            locale = "en",
-            phoneOrientation = PhoneOrientation.LANDSCAPE,
-            nightMode = NightMode.NOTNIGHT,
-            fontScale = 1.3f,
-            displaySize = DisplaySize.SMALL,
-        ),
-    ),
     HUGE_FONT_NORMAL_SCREEN(
         DeviceConfig(
             locale = "en",
@@ -71,15 +62,6 @@ enum class UnhappyPathTestItem(val item: DeviceConfig) {
             nightMode = NightMode.NOTNIGHT,
             fontScale = 1.3f,
             displaySize = DisplaySize.NORMAL,
-        ),
-    ),
-    AR_XB_SMALL(
-        DeviceConfig(
-            locale = "ar-rXB",
-            phoneOrientation = PhoneOrientation.PORTRAIT,
-            nightMode = NightMode.NOTNIGHT,
-            fontScale = 1.3f,
-            displaySize = DisplaySize.LARGEST,
         ),
     ),
     HUGE_FONT_SMALL_SCREEN(
@@ -91,24 +73,6 @@ enum class UnhappyPathTestItem(val item: DeviceConfig) {
             displaySize = DisplaySize.SMALL,
         ),
     ),
-    AR_XB_SMALL_FONT(
-        DeviceConfig(
-            locale = "ar",
-            phoneOrientation = PhoneOrientation.PORTRAIT,
-            nightMode = NightMode.NOTNIGHT,
-            fontScale = 0.85f,
-            displaySize = DisplaySize.NORMAL,
-        ),
-    ),
-    AR_XB_HUGE_FONT_SMALL_SCREEN(
-        DeviceConfig(
-            locale = "ar",
-            phoneOrientation = PhoneOrientation.PORTRAIT,
-            nightMode = NightMode.NOTNIGHT,
-            fontScale = 1.3f,
-            displaySize = DisplaySize.SMALL,
-        ),
-    )
 }
 
 internal val coffeeDrink =

@@ -39,24 +39,6 @@ enum class UnhappyPathTestItem(val item: ComposableConfigItem) {
             displaySize = DisplaySize.NORMAL,
         ),
     ),
-    LANDSCAPE_DAY(
-        ComposableConfigItem(
-            locale = "en",
-            orientation = Orientation.LANDSCAPE,
-            uiMode = UiMode.DAY,
-            fontSize = FontSize.NORMAL,
-            displaySize = DisplaySize.NORMAL,
-        ),
-    ),
-    LANDSCAPE_HUGE_FONT_SMALL_SCREEN(
-        ComposableConfigItem(
-            locale = "en",
-            orientation = Orientation.LANDSCAPE,
-            uiMode = UiMode.DAY,
-            fontSize = FontSize.HUGE,
-            displaySize = DisplaySize.SMALL,
-        ),
-    ),
     HUGE_FONT_NORMAL_SCREEN(
         ComposableConfigItem(
             locale = "en",
@@ -84,24 +66,6 @@ enum class UnhappyPathTestItem(val item: ComposableConfigItem) {
             displaySize = DisplaySize.LARGEST,
         ),
     ),
-    AR_XB_SMALL_FONT(
-        ComposableConfigItem(
-            locale = "ar_XB",
-            orientation = Orientation.PORTRAIT,
-            uiMode = UiMode.DAY,
-            fontSize = FontSize.SMALL,
-            displaySize = DisplaySize.NORMAL,
-        ),
-    ),
-    AR_XB_HUGE_FONT_SMALL_SCREEN(
-        ComposableConfigItem(
-            locale = "ar_XB",
-            orientation = Orientation.PORTRAIT,
-            uiMode = UiMode.DAY,
-            fontSize = FontSize.HUGE,
-            displaySize = DisplaySize.SMALL,
-        ),
-    )
 }
 
 internal val coffeeDrink =

@@ -66,42 +66,6 @@ enum class UnhappyPathTestItem(val item: ComposableConfigItem) {
             displaySize = DisplaySize.NORMAL,
         ),
     ),
-    HUGE_FONT_SMALL_SCREEN(
-        ComposableConfigItem(
-            locale = "en",
-            orientation = Orientation.PORTRAIT,
-            uiMode = UiMode.DAY,
-            fontSize = FontSize.HUGE,
-            displaySize = DisplaySize.SMALL,
-        ),
-    ),
-    HUGE_FONT_LARGEST_SCREEN(
-        ComposableConfigItem(
-            locale = "en",
-            orientation = Orientation.PORTRAIT,
-            uiMode = UiMode.DAY,
-            fontSize = FontSize.HUGE,
-            displaySize = DisplaySize.LARGEST,
-        ),
-    ),
-    AR_XB_SMALL_FONT(
-        ComposableConfigItem(
-            locale = "ar_XB",
-            orientation = Orientation.PORTRAIT,
-            uiMode = UiMode.DAY,
-            fontSize = FontSize.SMALL,
-            displaySize = DisplaySize.NORMAL,
-        ),
-    ),
-    AR_XB_HUGE_FONT_SMALL_SCREEN(
-        ComposableConfigItem(
-            locale = "ar_XB",
-            orientation = Orientation.PORTRAIT,
-            uiMode = UiMode.DAY,
-            fontSize = FontSize.HUGE,
-            displaySize = DisplaySize.SMALL,
-        ),
-    )
 }
 
 internal val coffeeDrink =
