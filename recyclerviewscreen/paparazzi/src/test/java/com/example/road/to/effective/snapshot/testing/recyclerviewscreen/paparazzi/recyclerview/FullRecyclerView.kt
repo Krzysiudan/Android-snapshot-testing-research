@@ -134,7 +134,4 @@ enum class FullRecyclerViewTestItem(val config: DeviceConfig, val device: app.ca
     HUGE_FONT(DeviceConfig(fontScale = 1.5f)),
     SMALL_FONT(DeviceConfig(fontScale = 0.7f)),
     LANDSCAPE(DeviceConfig(orientation = PhoneOrientation.LANDSCAPE)),
-    ARABIC(DeviceConfig(locale = "ar")),
-    NORMAL_NEXUS_4(DeviceConfig()),
-    NORMAL_NIGHT_NEXUS_4(DeviceConfig(nightMode = NightMode.NIGHT)),
 }

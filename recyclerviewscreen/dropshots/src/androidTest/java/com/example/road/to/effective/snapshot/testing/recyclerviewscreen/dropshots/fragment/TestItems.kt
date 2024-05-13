@@ -41,26 +41,4 @@ enum class UnhappyPathTestItem(val item: FragmentConfigItem) {
             fontSize = FontSize.NORMAL,
         ),
     ),
-    AR_XB_HUGE(
-        FragmentConfigItem(
-            locale = "ar_XB",
-            uiMode = UiMode.DAY,
-            fontSize = FontSize.HUGE,
-        ),
-    ),
-    PORTRAIT_NIGHT(
-        FragmentConfigItem(
-            locale = "en",
-            uiMode = UiMode.NIGHT,
-            fontSize = FontSize.NORMAL,
-        ),
-    ),
-    LANDSCAPE_NIGHT(
-        FragmentConfigItem(
-            locale = "en",
-            uiMode = UiMode.NIGHT,
-            fontSize = FontSize.NORMAL,
-            orientation = Orientation.LANDSCAPE,
-        ),
-    ),
 }

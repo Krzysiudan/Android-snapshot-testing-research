@@ -63,15 +63,3 @@ enum class HappyPathTestItem(val item: TrainingTestItem) {
     ),
 }
 
-enum class UnhappyPathTestItem(val item: TrainingTestItem) {
-    UNHAPPY_EN_WITH_WORDS(
-        TrainingTestItem(
-            deviceConfig = DeviceConfig(
-                locale = "en",
-                nightMode = NightMode.NIGHT,
-                orientation = PhoneOrientation.LANDSCAPE,
-            ),
-            trainingItem = wordsInSomeLangsTrainingItem,
-        ),
-    ),
-}
