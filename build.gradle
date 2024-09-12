@@ -7,13 +7,13 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:8.2.0-beta05'
+        classpath 'com.android.tools.build:gradle:8.2.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "de.mannodermaus.gradle.plugins:android-junit5:1.7.1.1"
 
         // screenshot testing plugins
         // noinspection GradleDependency
-        classpath 'app.cash.paparazzi:paparazzi-gradle-plugin:1.3.2'
+        classpath 'app.cash.paparazzi:paparazzi-gradle-plugin:1.3.1'
         classpath 'com.karumi:shot:6.0.0'
         classpath 'com.dropbox.dropshots:dropshots-gradle-plugin:0.4.1'
         classpath 'io.github.takahirom.roborazzi:roborazzi-gradle-plugin:1.8.0-alpha-6'
@@ -24,34 +24,102 @@ buildscript {
     }
 }
 
-allprojects {
-    repositories {
-        google()
-        mavenCentral()
-        maven { url 'https://jitpack.io' }
+task clean(type: Delete) {
+    delete rootProject.buildDir
+    doLast {
+        'clean'
     }
 }
 
-subprojects {
-    plugins.withId("app.cash.paparazzi") {
-        // Defer until afterEvaluate so that testImplementation is created by Android plugin.
-        afterEvaluate {
-            dependencies.constraints {
-                add("testImplementation", "com.google.guava:guava") {
-                    attributes {
-                        attribute(
-                                TargetJvmEnvironment.TARGET_JVM_ENVIRONMENT_ATTRIBUTE,
-                                objects.named(TargetJvmEnvironment, TargetJvmEnvironment.STANDARD_JVM)
-                        )
-                    }
-                    because("LayoutLib and sdk-common depend on Guava's -jre published variant." +
-                            "See https://github.com/cashapp/paparazzi/issues/906.")
-                }
-            }
+task runDropshotScreenshotRecording {
+    doLast {
+        println 'Executing all Dropshot screenshots recording...'
+    }
+}
+
+tasks.named('runDropshotScreenshotRecording') {
+    dependsOn(
+            'dialogs:dropshots:connectedAndroidTest',
+            'recyclerviewscreen:dropshots:connectedAndroidTest',
+            'lazycolumnscreen:dropshots:connectedAndroidTest'
+    )
+}
+
+// Setting the project property for all tasks
+gradle.projectsEvaluated {
+    tasks.withType(Test) {
+        if (project.hasProperty('dropshots.record')) {
+            systemProperty 'dropshots.record', project.getProperty('dropshots.record')
         }
     }
 }
 
-task clean(type: Delete) {
-    delete rootProject.buildDir
+task runTestifyScreenshotClearing {
+    doLast {
+        println 'Executing all Testify screenshots clearing...'
+    }
 }
+
+tasks.named('runTestifyScreenshotClearing') {
+    dependsOn(
+            'clean',
+    )
+}
+
+task runTestifyScreenshotRecording {
+    doLast {
+        println 'Executing all Testify screenshots recording...'
+    }
+}
+
+tasks.named('runTestifyScreenshotRecording') {
+    dependsOn(
+            'dialogs:android-testify:pixel3api30DebugAndroidTest',
+            'recyclerviewscreen:android-testify:pixel3api30DebugAndroidTest',
+            'lazycolumnscreen:android-testify:pixel3api30DebugAndroidTest'
+    )
+}
+
+task runTestifyScreenshotVerifying {
+    doLast {
+        println 'Executing all Testify screenshots verifying...'
+    }
+}
+
+tasks.named('runTestifyScreenshotVerifying') {
+    dependsOn(
+            'dialogs:android-testify:pixel3api30DebugAndroidTest',
+            'recyclerviewscreen:android-testify:pixel3api30DebugAndroidTest',
+            'lazycolumnscreen:android-testify:pixel3api30DebugAndroidTest'
+    )
+}
+
+// Setting the project property for all tasks
+gradle.projectsEvaluated {
+    tasks.withType(Test) {
+        if (project.hasProperty('recordModeGmd')) {
+            systemProperty 'recordModeGmd', project.getProperty('recordModeGmd')
+        }
+        if (project.hasProperty('useTestStorage')) {
+            systemProperty 'useTestStorage', project.getProperty('useTestStorage')
+        }
+        if (project.hasProperty('devices')) {
+            systemProperty 'devices', project.getProperty('devices')
+        }
+    }
+}
+
+task runTestifyScreenshotCopying {
+    doLast {
+        println 'Executing all Testify screenshots copying...'
+    }
+}
+
+tasks.named('runTestifyScreenshotCopying') {
+    dependsOn(
+            'dialogs:android-testify:copyScreenshots',
+            'recyclerviewscreen:android-testify:copyScreenshots',
+            'lazycolumnscreen:android-testify:copyScreenshots'
+    )
+}
+

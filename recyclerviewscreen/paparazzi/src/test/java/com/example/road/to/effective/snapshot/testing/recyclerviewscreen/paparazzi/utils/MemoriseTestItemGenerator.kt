@@ -28,8 +28,7 @@ object MemoriseTestItemGenerator {
     fun generateMemoriseItem(
         activity: Context,
         rightAligned: Boolean
-    ) =
-        MemoriseItem(
+    ) = MemoriseItem(
             memorise = generateMemorise(activity),
             rightAligned = rightAligned,
             currentTime = 0L

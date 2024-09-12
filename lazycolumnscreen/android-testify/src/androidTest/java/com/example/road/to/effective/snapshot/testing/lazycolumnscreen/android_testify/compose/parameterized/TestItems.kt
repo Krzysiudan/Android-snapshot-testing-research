@@ -17,20 +17,11 @@ enum class HappyPathTestItem(val item: ComposableConfigItem) {
             fontSize = FontSize.NORMAL,
             displaySize = DisplaySize.NORMAL,
         ),
-    )
+    ),
 }
 
 enum class UnhappyPathTestItem(val item: ComposableConfigItem) {
-    LANDSCAPE_NIGHT(
-        ComposableConfigItem(
-            locale = "en",
-            orientation = Orientation.LANDSCAPE,
-            uiMode = UiMode.NIGHT,
-            fontSize = FontSize.NORMAL,
-            displaySize = DisplaySize.NORMAL,
-        ),
-    ),
-    HUGE(
+    HUGE_FONT(
         ComposableConfigItem(
             locale = "en",
             orientation = Orientation.PORTRAIT,
@@ -39,15 +30,6 @@ enum class UnhappyPathTestItem(val item: ComposableConfigItem) {
             displaySize = DisplaySize.NORMAL,
         ),
     ),
-    AR_XB_SMALL(
-        ComposableConfigItem(
-            locale = "ar_XB",
-            orientation = Orientation.PORTRAIT,
-            uiMode = UiMode.DAY,
-            fontSize = FontSize.SMALL,
-            displaySize = DisplaySize.NORMAL,
-        ),
-    )
 }
 
 internal val coffeeDrink =

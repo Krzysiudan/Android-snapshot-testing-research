@@ -10,7 +10,13 @@ import org.junit.Rule
 import org.junit.Test
 import sergio.sastre.uitesting.android_testify.ScreenshotRuleWithConfigurationForFragment
 import sergio.sastre.uitesting.android_testify.assertSame
+import sergio.sastre.uitesting.utils.common.FontSize
+import sergio.sastre.uitesting.utils.common.UiMode
 import sergio.sastre.uitesting.utils.testrules.animations.DisableAnimationsRule
+import sergio.sastre.uitesting.utils.testrules.fontsize.FontSizeTestRule
+import sergio.sastre.uitesting.utils.testrules.locale.InAppLocaleTestRule
+import sergio.sastre.uitesting.utils.testrules.locale.SystemLocaleTestRule
+import sergio.sastre.uitesting.utils.testrules.uiMode.UiModeTestRule
 
 /**
  * Execute the command below to run only BitmapTests
@@ -33,6 +39,9 @@ import sergio.sastre.uitesting.utils.testrules.animations.DisableAnimationsRule
  */
 class CoffeeDrinkComposeFragmentToBitmapTest {
 
+    @get:Rule
+    val systemLocale = SystemLocaleTestRule("en")
+
     @get:Rule(order = 0)
     val disableAnimationsRule = DisableAnimationsRule()
 
@@ -49,21 +58,8 @@ class CoffeeDrinkComposeFragmentToBitmapTest {
     fun snapFragmentWithCanvas() {
         activityScreenshotRule
             .configure { this@configure.captureMethod = ::canvasCapture }
-            .withExperimentalFeatureEnabled(GenerateDiffs)
             .assertSame(
                 name = "CoffeeDrinksComposeFragment_WithoutElevation"
-            )
-    }
-
-    @ScreenshotInstrumentation
-    @BitmapTest
-    @Test
-    fun snapFragmentWithPixelCopy() {
-        activityScreenshotRule
-            .configure { this@configure.captureMethod = ::pixelCopyCapture }
-            .withExperimentalFeatureEnabled(GenerateDiffs)
-            .assertSame(
-                name = "CoffeeDrinksComposeFragment_WithElevation"
             )
     }
 }

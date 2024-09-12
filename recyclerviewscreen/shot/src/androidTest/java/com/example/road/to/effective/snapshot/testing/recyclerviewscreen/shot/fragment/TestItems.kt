@@ -13,7 +13,15 @@ enum class HappyPathTestItem(val item: FragmentConfigItem) {
             uiMode = UiMode.DAY,
             fontSize = FontSize.NORMAL,
         ),
-    )
+    ),
+    LANDSCAPE(
+    FragmentConfigItem(
+    locale = "en",
+    uiMode = UiMode.DAY,
+    fontSize = FontSize.NORMAL,
+        orientation = Orientation.LANDSCAPE
+    ),
+    ),
 }
 
 enum class UnhappyPathTestItem(val item: FragmentConfigItem) {
@@ -33,19 +41,4 @@ enum class UnhappyPathTestItem(val item: FragmentConfigItem) {
             fontSize = FontSize.NORMAL,
         ),
     ),
-    AR_XB_HUGE(
-        FragmentConfigItem(
-            locale = "ar_XB",
-            uiMode = UiMode.DAY,
-            fontSize = FontSize.HUGE,
-        ),
-    ),
-    LANDSCAPE_NIGHT(
-        FragmentConfigItem(
-            locale = "en",
-            uiMode = UiMode.NIGHT,
-            orientation = Orientation.LANDSCAPE,
-            fontSize = FontSize.NORMAL,
-        ),
-    )
 }

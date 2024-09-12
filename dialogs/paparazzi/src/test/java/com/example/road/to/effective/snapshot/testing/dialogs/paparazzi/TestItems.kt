@@ -38,6 +38,15 @@ enum class HappyPathTestItem(val deleteItem: DeleteDialogTestItem) {
             screenWidth = ScreenWidth.NORMAL,
         )
     ),
+    NORMAL_NIGHT(
+        DeleteDialogTestItem(
+            bulletTexts = listOf(R.string.largest, R.string.middle, R.string.shortest),
+            screenWidth = ScreenWidth.NORMAL,
+            deviceConfig = DeviceConfig(
+                nightMode = NightMode.NIGHT,
+            ),
+        )
+    ),
 }
 
 enum class UnhappyPathTestItem(val deleteItem: DeleteDialogTestItem) {
@@ -55,6 +64,26 @@ enum class UnhappyPathTestItem(val deleteItem: DeleteDialogTestItem) {
         DeleteDialogTestItem(
             deviceConfig = DeviceConfig(
                 nightMode = NightMode.NIGHT,
+                fontScale = 1.13f,
+            ),
+            bulletTexts = repeatedItem(7, R.string.largest),
+            screenWidth = ScreenWidth.NARROW,
+        ),
+    ),
+    SPACIOUS_DAY(
+        DeleteDialogTestItem(
+            deviceConfig = DeviceConfig(
+                nightMode = NightMode.NOTNIGHT,
+                fontScale = 0.85f,
+            ),
+            bulletTexts = listOf(R.string.shortest),
+            screenWidth = ScreenWidth.WIDE,
+        ),
+    ),
+    SUFFOCATED_DAY(
+        DeleteDialogTestItem(
+            deviceConfig = DeviceConfig(
+                nightMode = NightMode.NOTNIGHT,
                 fontScale = 1.13f,
             ),
             bulletTexts = repeatedItem(7, R.string.largest),

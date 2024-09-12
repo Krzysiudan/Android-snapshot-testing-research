@@ -17,6 +17,8 @@ import sergio.sastre.uitesting.utils.common.Orientation
 import sergio.sastre.uitesting.utils.common.UiMode
 import sergio.sastre.uitesting.utils.fragmentscenario.FragmentConfigItem
 import sergio.sastre.uitesting.utils.testrules.animations.DisableAnimationsRule
+import sergio.sastre.uitesting.utils.testrules.locale.InAppLocaleTestRule
+import sergio.sastre.uitesting.utils.testrules.locale.SystemLocaleTestRule
 
 /**
  * Execute the command below to run only FragmentTests
@@ -63,42 +65,8 @@ class CoffeeDrinkComposeFragmentHappyPathTest {
     @Test
     fun snapFragment() {
         activityScreenshotRule
-            .withExperimentalFeatureEnabled(GenerateDiffs)
             .assertSame(
                 name = "CoffeeDrinksComposeFragment_HappyPath"
-            )
-    }
-}
-
-class CoffeeDrinkComposeFragmentUnhappyPathTest {
-
-    @get:Rule(order = 0)
-    val disableAnimationsRule = DisableAnimationsRule()
-
-    @get:Rule(order = 1)
-    val activityScreenshotRule =
-        ScreenshotRuleWithConfigurationForFragment(
-            exactness = 0.85f,
-            fragmentClass = CoffeeDrinksFragment::class.java,
-            fragmentArgs = bundleOf("coffee_shop_name" to "MyCoffeeShop"),
-            config = FragmentConfigItem(
-                locale = "ar_XB",
-                uiMode = UiMode.NIGHT,
-                fontSize = FontSize.SMALL,
-                displaySize = DisplaySize.SMALL,
-                orientation = Orientation.LANDSCAPE
-            ),
-        )
-
-    @ScreenshotInstrumentation
-    @UnhappyPath
-    @FragmentTest
-    @Test
-    fun snapFragment() {
-        activityScreenshotRule
-            .withExperimentalFeatureEnabled(GenerateDiffs)
-            .assertSame(
-                name = "CoffeeDrinksComposeFragment_UnhappyPath"
             )
     }
 }

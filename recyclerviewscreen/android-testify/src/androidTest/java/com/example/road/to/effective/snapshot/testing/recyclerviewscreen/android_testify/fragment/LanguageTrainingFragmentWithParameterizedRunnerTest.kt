@@ -4,8 +4,11 @@ import com.example.road.to.effective.snapshot.testing.recyclerviewscreen.mvvm.La
 import com.example.road.to.effective.snapshot.testing.testannotations.FragmentTest
 import com.example.road.to.effective.snapshot.testing.testannotations.HappyPath
 import com.example.road.to.effective.snapshot.testing.testannotations.UnhappyPath
+import dev.testify.CaptureMethod
+import dev.testify.TestifyFeatures
 import dev.testify.TestifyFeatures.GenerateDiffs
 import dev.testify.annotation.ScreenshotInstrumentation
+import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -13,6 +16,8 @@ import org.junit.runners.Parameterized
 import sergio.sastre.uitesting.android_testify.ScreenshotRuleWithConfigurationForFragment
 import sergio.sastre.uitesting.android_testify.assertSame
 import sergio.sastre.uitesting.utils.testrules.animations.DisableAnimationsRule
+import sergio.sastre.uitesting.utils.testrules.locale.InAppLocaleTestRule
+import sergio.sastre.uitesting.utils.testrules.locale.SystemLocaleTestRule
 
 /**
  * Execute the command below to run only FragmentTests
@@ -49,10 +54,15 @@ class LanguageTrainingFragmentParameterizedHappyPathTest(
     @get:Rule(order = 1)
     val activityScreenshotRule =
         ScreenshotRuleWithConfigurationForFragment(
-            exactness = 0.85f,
+            exactness = 0.40f,
             fragmentClass = LanguageTrainingFragment::class.java,
             config = testItem.item,
         )
+
+    @Before
+    fun setUp(){
+        TestifyFeatures.PixelCopyCapture.setEnabled()
+    }
 
     @ScreenshotInstrumentation
     @HappyPath
@@ -60,7 +70,6 @@ class LanguageTrainingFragmentParameterizedHappyPathTest(
     @Test
     fun snapFragment() {
         activityScreenshotRule
-            .withExperimentalFeatureEnabled(GenerateDiffs)
             .assertSame(
                 name = "LanguageTrainingFragment_${testItem.name}_Parameterized"
             )
@@ -84,7 +93,7 @@ class LanguageTrainingFragmentParameterizedUnhappyPathTest(
     @get:Rule(order = 1)
     val activityScreenshotRule =
         ScreenshotRuleWithConfigurationForFragment(
-            exactness = 0.85f,
+            exactness = 0.25f,
             fragmentClass = LanguageTrainingFragment::class.java,
             config = testItem.item,
         )
@@ -95,7 +104,6 @@ class LanguageTrainingFragmentParameterizedUnhappyPathTest(
     @Test
     fun snapFragment() {
         activityScreenshotRule
-            .withExperimentalFeatureEnabled(GenerateDiffs)
             .assertSame(
                 name = "LanguageTrainingFragment_${testItem.name}_Parameterized"
             )

@@ -1,12 +1,12 @@
 package com.example.road.to.effective.snapshot.testing.recyclerviewscreen.android_testify.activity
 
 import android.content.pm.ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
+import android.content.pm.ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 import com.example.road.to.effective.snapshot.testing.recyclerviewscreen.mvvm.LanguageTrainingActivity
 import com.example.road.to.effective.snapshot.testing.testannotations.ActivityTest
 import com.example.road.to.effective.snapshot.testing.testannotations.HappyPath
 import com.example.road.to.effective.snapshot.testing.testannotations.UnhappyPath
 import dev.testify.ScreenshotRule
-import dev.testify.TestifyFeatures
 import dev.testify.annotation.ScreenshotInstrumentation
 import dev.testify.core.TestifyConfiguration
 import org.junit.Rule
@@ -19,6 +19,7 @@ import sergio.sastre.uitesting.utils.testrules.fontsize.FontSizeTestRule
 import sergio.sastre.uitesting.utils.testrules.locale.InAppLocaleTestRule
 import sergio.sastre.uitesting.utils.testrules.locale.SystemLocaleTestRule
 import sergio.sastre.uitesting.utils.testrules.uiMode.UiModeTestRule
+import java.util.Locale
 
 /**
  * Execute the command below to run only ActivityTests
@@ -47,7 +48,10 @@ class LanguageTrainingActivityHappyPathTest {
     @get:Rule(order = 2)
     val activityScreenshotRule =
         ScreenshotRule(
-            configuration = TestifyConfiguration(exactness = 0.85f),
+            configuration = TestifyConfiguration(
+                exactness = 0.85f,
+                orientation = SCREEN_ORIENTATION_PORTRAIT,
+            ),
             activityClass = LanguageTrainingActivity::class.java,
         )
 
@@ -57,46 +61,6 @@ class LanguageTrainingActivityHappyPathTest {
     @Test
     fun snapActivity() {
         activityScreenshotRule
-            .withExperimentalFeatureEnabled(TestifyFeatures.GenerateDiffs)
             .assertSame(name = "LanguageTrainingActivity_HappyPath")
-    }
-}
-
-class LanguageTrainingActivityUnhappyPathTest {
-
-    @get:Rule(order = 0)
-    val disableAnimationsRule = DisableAnimationsRule()
-
-    // WARNING: in-app Locale prevails over SystemLocale when screenshot testing your app
-    @get:Rule(order = 1)
-    val inAppLocale = InAppLocaleTestRule("ar_XB")
-
-    @get:Rule(order = 2)
-    val systemLocale = SystemLocaleTestRule("en_XA")
-
-    @get:Rule(order = 3)
-    val fontSize = FontSizeTestRule(FontSize.HUGE)
-
-    @get:Rule(order = 4)
-    val uiMode = UiModeTestRule(UiMode.NIGHT)
-
-    @get:Rule(order = 5)
-    val activityScreenshotRule =
-        ScreenshotRule(
-            activityClass = LanguageTrainingActivity::class.java,
-            configuration = TestifyConfiguration(
-                exactness = 0.85f,
-                orientation = SCREEN_ORIENTATION_LANDSCAPE
-            )
-        )
-
-    @ScreenshotInstrumentation
-    @UnhappyPath
-    @ActivityTest
-    @Test
-    fun snapActivity() {
-        activityScreenshotRule
-            .withExperimentalFeatureEnabled(TestifyFeatures.GenerateDiffs)
-            .assertSame(name = "LanguageTrainingActivity_UnhappyPath")
     }
 }

@@ -46,7 +46,7 @@ fun PreviewListItem() {
 }
 
 @Composable
-fun CoffeeDrinkList(
+fun CoffeeDrinkListItemWithDivider(
     modifier: Modifier = Modifier,
     coffeeDrink: CoffeeDrinkItem
 ) {
@@ -65,7 +65,7 @@ fun CoffeeDrinkListItem(
     Row(Modifier.background(color = MaterialTheme.colors.background)) {
         CoffeeDrinkLogo(id = coffeeDrink.imageUrl)
         Box(
-            modifier = Modifier.weight(1f)
+            modifier = Modifier.weight(1f).padding(8.dp)
         ) {
             Column {
                 CoffeeDrinkTitle(title = coffeeDrink.name)

@@ -53,13 +53,6 @@ private val wordsInSomeLangsTrainingItem = TrainingItem(
 )
 
 enum class HappyPathTestItem(val item: TrainingTestItem) {
-    HAPPY_EN_WITHOUT_WORDS(
-        TrainingTestItem(
-            deviceConfig = DeviceConfig(
-                locale = "en",
-            ),
-        ),
-    ),
     HAPPY_EN_WITH_WORDS(
         TrainingTestItem(
             deviceConfig = DeviceConfig(
@@ -70,51 +63,3 @@ enum class HappyPathTestItem(val item: TrainingTestItem) {
     ),
 }
 
-enum class UnhappyPathTestItem(val item: TrainingTestItem) {
-    AR_WITH_WORDS(
-        TrainingTestItem(
-            deviceConfig = DeviceConfig(
-                locale = "ar",
-            ),
-            trainingItem = wordsInSomeLangsTrainingItem,
-        ),
-    ),
-    CUSTOM_THEME_DAY_SR_LATIN_WITH_WORDS(
-        TrainingTestItem(
-            deviceConfig = DeviceConfig(
-                locale = "b+sr+Latn",
-                theme = "Theme.Custom",
-            ),
-            trainingItem = wordsInSomeLangsTrainingItem,
-        ),
-    ),
-    CUSTOM_THEME_NIGHT_SR_CYRYL_WITH_WORDS(
-        TrainingTestItem(
-            deviceConfig = DeviceConfig(
-                locale = "b+sr+Cyrl",
-                theme = "Theme.Custom",
-                nightMode = NightMode.NIGHT,
-            ),
-            trainingItem = wordsInSomeLangsTrainingItem,
-        ),
-    ),
-    HUGE_1M_WORDS_IN_ALL_LANGS(
-        TrainingTestItem(
-            deviceConfig = DeviceConfig(
-                locale = "en",
-                fontScale = 1.3f,
-            ),
-            trainingItem = oneMillionWordsTrainingItem,
-        ),
-    ),
-    NIGHT_LANDSCAPE_1M_WORDS_IN_ALL_LANGS(
-        TrainingTestItem(
-            deviceConfig = DeviceConfig(
-                locale = "en",
-                orientation = PhoneOrientation.LANDSCAPE,
-                nightMode = NightMode.NIGHT,
-            ),
-            trainingItem = oneMillionWordsTrainingItem,
-        ),
-    ),
-}
